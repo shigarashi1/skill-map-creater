@@ -1,78 +1,109 @@
 @startuml schema-diagram
 
-' FirebaseBaseObject
-object FirebaseBase {
-  createdAt: firebase_timestamp
-  updatedAt: firebase_timestamp
-	createdUser: user_id
-  updatedUser: user_id
-}
-
-object ClientBase {
-  id: firebase_doc_id
-}
-
-object Users {
-	username: string;
-}
-
-frame group {
-	object Groups {
-		owner: user_id
-		name: string
-		description: string
+frame BaseObject {
+	' FirebaseBaseObject
+	object FirebaseBase {
+		createdAt: Firebase.timestamp
+		updatedAt: Firebase.timestamp
+		createdUser: Users.id
+		updatedUser: Users.id
 	}
-
-	object GroupUsers {
-		group: group_id
-		user: user_id
-		auth: ?
+	object ClientBase {
+		id: Firebase.Doc.id
 	}
 }
 
-object Projects {
-	group: group_id
-	name: string
-	description: string
+package Domain {
+	frame User {
+		object Users {
+			uid: FirebaseAuth.uid
+			username: string;
+		}
+	}
+
+	frame Group {
+		object Groups {
+			owner: Users.id
+			name: string
+			description: string
+			members: Users.id[]
+		}
+	}
+
+	frame Project { 
+		object Projects {
+			group: Groups.id
+			name: string
+			description: string
+		}
+
+		object ProjectMembers {
+			project: Projects.id
+			user: Users.id
+			auth: ?
+		}
+	}
+
+	frame Skill { 
+		object SkillCategories {
+			project: Projects.id
+			name: string
+			description: string
+		}
+
+		object SkillLevels {
+			project: Projects.id
+			order: number
+			icon: string
+			name: string
+			description: string
+		}
+
+		object Skills {
+			project: Projects.id
+			category: SkillCategories.id
+			name: string
+		}
+
+		object SkillDiscriptions {
+			project: Projects.id
+			lebel: SkillLevels.id
+			skill: Skills.id
+			description: string
+		}
+
+		object UsersSkills {
+			project: Projects.id
+			user: Users.id
+			skill: Skill.id
+			grows: string
+			description: string
+		}
+	}
 }
 
-object ProjectUsers {
-	project: project_id
-	user: user_id
-	auth: ?
-}
+package ReduxStore {
+	frame userFeature {
+		object user {
+			id: string
+			uid: string
+			username: string
+		}
+	}
 
-object SkillCategories {
-	project: project_id
-	name: string
-	description: string
-}
+	frame groupFeature {
+		object ownerGroup {
+			id: string
+			groupMembers: Users[]
+		}
+		object belongedToGroup {
+		}
+	}
 
-object Skills {
-	category: skill_category_id
-	name: string
-	description: string
-}
-
-object SkillLevels {
-	project: project_id
-	icon: string
-	name: string
-	description: string
-	order: number
-}
-
-object SkillDiscriptions {
-	skillLebel: skill_lebel_id
-	skill: skill_id
-	description: string
-}
-
-object UserSkills {
-	user: user_id
-	skill: skill_id
-	description: string
-	grows: string
+	frame projectFeature {
+		object project {
+		}
+	}
 }
 
 @enduml
