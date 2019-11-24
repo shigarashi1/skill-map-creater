@@ -18,6 +18,7 @@ package Domain {
 		object Users {
 			uid: FirebaseAuth.uid
 			username: string;
+			roll: string
 		}
 	}
 
@@ -63,20 +64,21 @@ package Domain {
 			project: Projects.id
 			category: SkillCategories.id
 			name: string
+			description: string
 		}
 
-		object SkillDiscriptions {
+		object SkillLebelDiscriptions {
 			project: Projects.id
 			lebel: SkillLevels.id
 			skill: Skills.id
 			description: string
 		}
 
-		object UsersSkills {
+		object UserSkills {
 			project: Projects.id
 			user: Users.id
 			skill: Skill.id
-			grows: string
+			isGrowth: boolean
 			description: string
 		}
 	}
