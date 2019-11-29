@@ -1,0 +1,26 @@
+@startuml schema-diagram
+
+frame userFeature {
+  object user {
+    id: string
+    uid: string
+    username: string
+  }
+}
+
+frame groupFeature {
+  object ownerGroup {
+    id: string
+    groupMembers: Users[]
+  }
+  object belongedToGroup {
+  }
+}
+
+frame projectFeature {
+  object project {
+    projects: Projects[]
+  }
+}
+
+@enduml

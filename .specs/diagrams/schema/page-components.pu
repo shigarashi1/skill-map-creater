@@ -1,0 +1,50 @@
+@startuml schema-diagram
+
+frame pageFeature {
+  object homePage {
+
+  }
+  object groupPage {
+    selectedGroup: Groups.id
+    name: Groups.name
+    members: Users[]
+    description: string
+    belongToGroups: Groups[]
+  }
+  object projectPage {
+    selectedGroup: Groups.id
+  }
+  object skillPage {
+
+  }
+  object userSkillPage {
+
+  }
+  object userPage {
+
+  }
+}
+
+frame dialogFeature {
+  object dialog.group {
+    isEdit: boolean
+    hasOpen: boolean
+    groupId: Groups.id
+    name: string
+    description: string
+    members: Users[]
+  }
+  
+  object dialog.project {
+    isEdit: boolean
+    hasOpen: boolean
+    projectId: Projects.id
+    name: string
+    description: string
+    isDuplicate: boolean
+    baseProjectId: Projects.id
+    projects: Projects[]
+  }
+}
+
+@enduml

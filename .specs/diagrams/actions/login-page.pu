@@ -1,0 +1,202 @@
+@startuml login-page
+
+package Views {
+  frame LoginPageComponent {
+    ' Actions
+    rectangle LoginPageComponent.signIn [
+      signIn
+      ----
+      void
+    ]
+    rectangle LoginPageComponent.signUp [
+      signUp
+      ----
+      void
+    ]
+    rectangle LoginPageComponent.changeValue [
+      changeValue
+      ----
+      key: keyof ILoginPageState
+      value: string | boolean
+    ]
+    rectangle LoginPageComponent.clear [
+      clear
+      ----
+      void
+    ]
+  }
+}
+
+package Events {
+  frame LoginPageListener {
+    ' Epics
+    control signIn as LoginPageListener.signIn
+    control signUp as LoginPageListener.signUp
+    control changeValue as LoginPageListener.changeValue
+    control clear as LoginPageListener.clear
+  }
+}
+
+' Listener -up.> View
+LoginPageListener.signIn -up.> LoginPageComponent.signIn
+LoginPageListener.signUp -up.> LoginPageComponent.signUp
+LoginPageListener.changeValue -up.> LoginPageComponent.changeValue
+LoginPageListener.clear -up.> LoginPageComponent.clear
+
+package Store {
+  frame Store.LoginPage {
+    ' Actions
+    rectangle Store.LoginPage.signIn.started <<started>> [
+      signIn
+      ----
+      params: {}
+    ]
+    rectangle Store.LoginPage.signIn.done <<done>> [
+      signIn
+      ----
+      params: {}
+      result: {}
+    ]
+
+    rectangle Store.LoginPage.signUp.started <<started>> [
+      signUp
+      ----
+      params: {}
+    ]
+    rectangle Store.LoginPage.signUp.done <<done>> [
+      signUp
+      ----
+      params: {}
+      result: {}
+    ]
+    
+    ' Epics
+    control signIn as Store.LoginPage.Epic.signIn
+    control signInDone as Store.LoginPage.Epic.signIn.done
+
+    control signUp as Store.LoginPage.Epic.signUp
+    control signUpDone as Store.LoginPage.Epic.signUp.done
+
+    ' Reducers
+    entity changeValue as Store.LoginPage.Reducer.changeValue #333
+    entity clear as Store.LoginPage.Reducer.clear #333
+    entity signInDone as Store.LoginPage.Reducer.signIn <<done>> #333
+    entity signUpDone as Store.LoginPage.Reducer.signUp <<done>> #333
+
+    ' Epics -up.> Actions
+    Store.LoginPage.Epic.signIn -up.> Store.LoginPage.signIn.started
+    Store.LoginPage.Epic.signUp -up.> Store.LoginPage.signUp.started
+    Store.LoginPage.Epic.signIn.done -up.> Store.LoginPage.signIn.done
+    Store.LoginPage.Epic.signUp.done -up.> Store.LoginPage.signUp.done
+
+    ' Reducers -up.> Actions
+    Store.LoginPage.Reducer.signIn -up.> Store.LoginPage.signIn.done
+    Store.LoginPage.Reducer.signUp -up.> Store.LoginPage.signUp.done
+  }
+
+  frame Store.User {
+    rectangle Store.User.create.started <<started>> [
+      create
+      ----
+      params: { 
+        signUp: TSignUp, 
+        user: TFirebaseUser
+      }
+    ]
+    rectangle Store.User.create.done <<done>> [
+      create
+      ----
+      params: { 
+        signUp: TSignUp, 
+        user: TFirebaseUser
+      }
+      result: { }
+    ]
+
+    ' Epics
+    control create as Store.User.Epic.create
+
+    ' Reducers
+    entity create as Store.User.Reducer.create <<done>> #333
+
+    ' Epics -up.> Actions
+    Store.User.Epic.create -up.> Store.User.create.started 
+
+    ' Reducers -up.> Actions
+    Store.User.Reducer.create -up.> Store.User.create.done
+  }
+}
+
+package Api {
+  frame Api.Auth {
+    rectangle Api.Auth.signIn [
+      signIn
+      ----
+      TSignIn
+    ]
+
+    rectangle Api.Auth.signUp [
+      signUp
+      ----
+      params: TSignUp
+    ]
+
+    ' epics
+    control signIn as Api.Auth.Epic.signIn
+    control signUp as Api.Auth.Epic.signUp
+
+    ' Epics -up.> Actions
+    Api.Auth.Epic.signIn -up.> Api.Auth.signIn
+    Api.Auth.Epic.signUp -up.> Api.Auth.signUp
+  }
+
+  frame Api.User {
+    rectangle Api.User.create [
+      create
+      ----
+      { 
+        uid: string
+        data: TSignUp
+      }
+    ]
+
+    ' epics
+    control create as Api.User.Epic.create
+
+    ' Epics -up.> Actions
+    Api.User.Epic.create -up.> Api.User.create
+  }
+}
+
+' Listener -down-> Store
+LoginPageListener.signIn -down-> Store.LoginPage.signIn.started
+LoginPageListener.signUp -down-> Store.LoginPage.signUp.started
+LoginPageListener.changeValue -down-> Store.LoginPage.Reducer.changeValue
+LoginPageListener.clear -down-> Store.LoginPage.Reducer.clear
+
+' StoreEpics -down-> ApiActions
+Store.LoginPage.Epic.signIn -down-> Api.Auth.signIn
+Store.LoginPage.Epic.signUp -down-> Api.Auth.signUp
+Store.User.Epic.create -down-> Api.User.create
+
+' ApiEpics -down-> StoreActions
+Api.Auth.Epic.signIn -down-> Store.LoginPage.signIn.done
+Api.Auth.Epic.signUp -down-> Store.User.create.started
+Api.User.Epic.create -down-> Store.LoginPage.signUp.done
+Api.User.Epic.create -down-> Store.User.create.done
+
+' Epics -down-> Another Store Actions
+' loading
+LoginPageListener.signIn -down-> Store.Util.syncLoading.start
+LoginPageListener.signUp -down-> Store.Util.syncLoading.start
+
+Store.LoginPage.Epic.signIn.done -down-> Store.Util.syncLoading.end
+Store.LoginPage.Epic.signUp.done -down-> Store.Util.syncLoading.end
+
+' Warm
+Events -down-> Store.Error.handleWarm
+
+' ApiError
+Api -down-> Store.Error.handleApiError
+
+@enduml

@@ -1,0 +1,87 @@
+@startuml schema-diagram
+
+' FirebaseBaseObject
+object FirebaseBase {
+  createdAt: Firebase.timestamp
+  updatedAt: Firebase.timestamp
+  createdUser: Users.id
+  updatedUser: Users.id
+}
+
+frame User {
+  object Users {
+    uid: FirebaseAuth.uid
+    username: string;
+    roll: ?
+  }
+}
+
+frame Group {
+  object Groups {
+    owner: Users.id
+    name: string
+    description: string
+    members: Users.id[]
+  }
+
+  object GroupMembers {
+    group: Groups.id
+    user: Users.id
+    auth: ?
+  }
+}
+
+frame Project { 
+  object Projects {
+    group: Groups.id
+    name: string
+    description: string
+  }
+
+  object ProjectMembers {
+    project: Projects.id
+    user: Users.id
+    auth: ?
+  }
+}
+
+frame Skill { 
+  object SkillCategories {
+    project: Projects.id
+    name: string
+    description: string
+  }
+
+  object SkillLevels {
+    project: Projects.id
+    order: number
+    icon: string
+    name: string
+    description: string
+  }
+
+  object Skills {
+    project: Projects.id
+    category: SkillCategories.id
+    name: string
+    description: string
+  }
+
+  object SkillLebelDiscriptions {
+    project: Projects.id
+    lebel: SkillLevels.id
+    skill: Skills.id
+    description: string
+  }
+
+  object UserSkills {
+    project: Projects.id
+    user: Users.id
+    skill: Skill.id
+    isGrowth: boolean
+    description: string
+    lastUpdateAt: number
+  }
+}
+
+@enduml
