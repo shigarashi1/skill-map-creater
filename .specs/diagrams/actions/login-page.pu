@@ -37,12 +37,6 @@ package Events {
   }
 }
 
-' Listener -up.> View
-LoginPageListener.signIn -up.> LoginPageComponent.signIn
-LoginPageListener.signUp -up.> LoginPageComponent.signUp
-LoginPageListener.changeValue -up.> LoginPageComponent.changeValue
-LoginPageListener.clear -up.> LoginPageComponent.clear
-
 package Store {
   frame Store.LoginPage {
     ' Actions
@@ -167,6 +161,12 @@ package Api {
     Api.User.Epic.create -up.> Api.User.create
   }
 }
+
+' Listener -up.> View
+LoginPageListener.signIn -up.> LoginPageComponent.signIn
+LoginPageListener.signUp -up.> LoginPageComponent.signUp
+LoginPageListener.changeValue -up.> LoginPageComponent.changeValue
+LoginPageListener.clear -up.> LoginPageComponent.clear
 
 ' Listener -down-> Store
 LoginPageListener.signIn -down-> Store.LoginPage.signIn.started
