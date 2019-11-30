@@ -1,6 +1,6 @@
 {
   "rules": {
     "indentation": 2,
-    "string-quotes": "double"
+    "string-quotes": "single"
   }
 }
