@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import * as Sentry from '@sentry/browser';
+
+import './styles/main.scss';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import config from './configuration/config';
+
+Sentry.init(config.sentry);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

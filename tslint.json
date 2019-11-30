@@ -19,7 +19,7 @@
       "options": ["allow-null-check"]
     },
     "no-inferrable-types": false,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-invalid-this": true,
     "no-debugger": true,
     "no-string-literal": true,
