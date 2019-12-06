@@ -7,6 +7,7 @@ import { sampleReducers, sampleEpics } from './__sample';
 import { rootActions } from './actions';
 
 import { eventListenerEpics } from '../views';
+import { middlewareEpics } from '../middlewares';
 
 // reducer
 export const reducers = combineReducers({
@@ -32,7 +33,7 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // epic
-const rootEpic = combineEpics(sampleEpics, eventListenerEpics);
+const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics);
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>();
 
 // enhance
