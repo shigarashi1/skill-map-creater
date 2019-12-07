@@ -1,6 +1,17 @@
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
-import { combineReducers, compose, applyMiddleware, StoreCreator, createStore, AnyAction } from 'redux';
+import {
+  combineReducers,
+  compose,
+  applyMiddleware,
+  StoreCreator,
+  createStore,
+  AnyAction,
+  Dispatch,
+  MiddlewareAPI,
+} from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import createSentryMiddleware from 'redux-sentry-middleware';
+import * as Sentry from '@sentry/browser';
 //
 import history from '../helpers/history';
 import { sampleReducers, sampleEpics } from './__sample';
@@ -8,6 +19,7 @@ import { rootActions } from './actions';
 
 import { eventListenerEpics } from '../views';
 import { middlewareEpics } from '../middlewares';
+import { Logger } from '../models';
 
 // reducer
 export const reducers = combineReducers({
@@ -35,10 +47,22 @@ const rootReducer = (state: any, action: any) => {
 // epic
 const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics);
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>();
+const crashSentryReporter = (api: MiddlewareAPI) => (next: Dispatch<AnyAction>) => (action: any) => {
+  try {
+    return next(action); // dispatch
+  } catch (err) {
+    Logger.error('Caught an exception!', err);
+    Sentry.withScope((scope) => {
+      scope.setExtra('Redux', { action, state: api.getState() });
+      Sentry.captureException(err);
+    });
+    throw err; // re-throw error
+  }
+};
 
 // enhance
 const enhancers = compose(
-  applyMiddleware(epicMiddleware, routerMiddleware(history)),
+  applyMiddleware(epicMiddleware, routerMiddleware(history), createSentryMiddleware(Sentry), crashSentryReporter),
   (window as any).__REDUX_DEVTOOLS_EXTENSION__
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
     : (f: StoreCreator) => f,

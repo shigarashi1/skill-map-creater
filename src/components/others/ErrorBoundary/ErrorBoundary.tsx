@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo } from 'react';
 import * as Sentry from '@sentry/browser';
+import config from '../../../configuration/config';
 
 interface IProps {
   isRoot?: boolean;
@@ -12,7 +13,7 @@ interface IState {
   eventId?: string;
 }
 
-class ExampleBoundary extends Component<IProps, IState> {
+class ErrorBoundary extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ class ExampleBoundary extends Component<IProps, IState> {
 
   render() {
     if (this.state.hasError) {
-      if (this.props.isRoot) {
+      if (!config.isDev && this.props.isRoot) {
         //render fallback UI
         const onClickReport = () => {
           Sentry.showReportDialog({ eventId: this.state.eventId });
@@ -51,4 +52,4 @@ class ExampleBoundary extends Component<IProps, IState> {
   }
 }
 
-export default ExampleBoundary;
+export default ErrorBoundary;

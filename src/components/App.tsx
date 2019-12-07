@@ -1,18 +1,22 @@
 import React from 'react';
-import './App.css';
+import { Provider } from 'react-redux';
+//
+import { configureStore } from '../store';
+import { ErrorBoundary } from './others';
+import { LoadingSpiner } from '../containers';
+import { BrowserTab } from '../backgrounds';
+
+const store = configureStore({});
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">a</div>
+      <ErrorBoundary>
+        <BrowserTab />
+        <LoadingSpiner />
+      </ErrorBoundary>
+    </Provider>
   );
 };
 
