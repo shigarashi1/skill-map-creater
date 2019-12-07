@@ -11,10 +11,11 @@ const store = configureStore({});
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <div className="App">a</div>
+      <LoadingSpiner>
+        <div className="App">a</div>
+      </LoadingSpiner>
       <ErrorBoundary>
         <BrowserTab />
-        <LoadingSpiner />
       </ErrorBoundary>
     </Provider>
   );
