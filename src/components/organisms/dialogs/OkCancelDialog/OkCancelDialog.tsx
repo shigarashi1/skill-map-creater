@@ -4,27 +4,21 @@ import Button from '@material-ui/core/Button';
 import styles from './OkCancelDialog.module.scss';
 
 import BaseDialog from '../BaseDialog/BaseDialog';
+import { TOkCancelDialog } from '../../../../types';
 
-interface IProps {
-  hasOpen: boolean;
-  onClose: () => void;
-  title: string;
-  content: string;
-  onOk: () => void;
-  onCancel: () => void;
-}
-
-const OkCancelDialog: React.FC<IProps> = (props: IProps) => {
-  const { hasOpen, onClose, title, content } = props;
-
+const OkCancelDialog: React.FC<TOkCancelDialog> = ({ hasOpen, close, title, context, ok, cancel }) => {
   const onOk = () => {
-    props.onOk();
-    props.onClose();
+    ok();
+    close();
   };
 
   const onCancel = () => {
-    props.onCancel();
-    props.onClose();
+    cancel();
+    close();
+  };
+
+  const onClose = () => {
+    close();
   };
 
   const buttonChildren = (
@@ -43,7 +37,7 @@ const OkCancelDialog: React.FC<IProps> = (props: IProps) => {
         title={title}
         areaLabeledby="dialog-ok-cancel"
       >
-        <p>{content}</p>
+        <p>{context}</p>
       </BaseDialog>
     </div>
   );

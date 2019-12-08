@@ -5,23 +5,23 @@ import styles from './InformationDialog.module.scss';
 
 import BaseDialog from '../BaseDialog/BaseDialog';
 import Typography from '@material-ui/core/Typography';
+import { TInfoDialog } from '../../../../types';
 
-type TProps = {
-  hasOpen: boolean;
-  title: string;
-  context?: string;
-  lists?: string[];
-  close: () => void;
-};
-
-const InformationDialog: React.FC<TProps> = ({ hasOpen, title, context, close }) => {
+const InfoDialog: React.FC<TInfoDialog> = ({ hasOpen, title, context, ok, close }) => {
   const onClose = () => {
     close();
   };
 
+  const onOk = () => {
+    if (ok) {
+      ok();
+    }
+    onClose();
+  };
+
   const buttonChildren = (
     <div className={styles.btnWrapper}>
-      <Button onClick={onClose}>Close</Button>
+      <Button onClick={onOk}>OK</Button>
     </div>
   );
 
@@ -29,15 +29,13 @@ const InformationDialog: React.FC<TProps> = ({ hasOpen, title, context, close })
     <div id={styles.container}>
       <BaseDialog hasOpen={hasOpen} onClose={onClose} buttonChildren={buttonChildren} title={title}>
         <React.Fragment>
-          {context ? (
-            <Typography variant="h6" gutterBottom={true}>
-              {context}
-            </Typography>
-          ) : null}
+          <Typography variant="h6" gutterBottom={true}>
+            {context}
+          </Typography>
         </React.Fragment>
       </BaseDialog>
     </div>
   );
 };
 
-export default InformationDialog;
+export default InfoDialog;

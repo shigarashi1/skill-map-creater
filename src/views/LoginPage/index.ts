@@ -1,2 +1,2 @@
-export { LoginPageActions } from './action';
-export { LoginPageListener } from './event';
+export { LoginPageActions } from './actions';
+export { LoginPageListener } from './events';

@@ -3,7 +3,7 @@ import { Epic, combineEpics } from 'redux-observable';
 import { ofAction } from 'typescript-fsa-redux-observable-of-action';
 import { mergeMap, map } from 'rxjs/operators';
 import { AppState } from '../../store';
-import { LoginPageActions } from './action';
+import { LoginPageActions } from './actions';
 
 // epics
 const signIn: Epic<AnyAction, Action<void>, AppState> = (action$, store) =>

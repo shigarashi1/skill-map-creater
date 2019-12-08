@@ -17,6 +17,10 @@ import history from '../helpers/history';
 import { sampleReducers, sampleEpics } from './__sample';
 import { rootActions } from './actions';
 
+// reducers
+import { utilsReducers, clearDialogEpics } from './utils';
+
+// epics
 import { eventListenerEpics } from '../views';
 import { middlewareEpics } from '../middlewares';
 import { Logger } from '../models';
@@ -24,7 +28,7 @@ import { Logger } from '../models';
 // reducer
 export const reducers = combineReducers({
   router: connectRouter(history),
-  // utility: utilityReducers,
+  utils: utilsReducers,
   // auth: authReducers,
   // user: userReducers,
   // category: categoryReducers,
@@ -45,13 +49,13 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // epic
-const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics);
+const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics, clearDialogEpics);
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>();
 const crashSentryReporter = (api: MiddlewareAPI) => (next: Dispatch<AnyAction>) => (action: any) => {
   try {
     return next(action); // dispatch
   } catch (err) {
-    Logger.error('Caught an exception!', err);
+    Logger.error('Redux caught an exception!', err);
     Sentry.withScope((scope) => {
       scope.setExtra('Redux', { action, state: api.getState() });
       Sentry.captureException(err);

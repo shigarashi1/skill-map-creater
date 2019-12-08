@@ -4,29 +4,21 @@ import Button from '@material-ui/core/Button';
 import styles from './YesNoDialog.module.scss';
 
 import BaseDialog from '../BaseDialog/BaseDialog';
+import { TYesNoDialog } from '../../../../types';
 
-type TProps = {
-  hasOpen: boolean;
-  title: string;
-  context: string;
-  close: () => void;
-  yes: () => void;
-  no: () => void;
-};
-
-const YesNoDialog: React.FC<TProps> = ({ hasOpen, title, context, close, yes, no }) => {
+const YesNoDialog: React.FC<TYesNoDialog> = ({ hasOpen, title, context, close, yes, no }) => {
   const onClose = () => {
     close();
   };
 
   const onSelectYes = () => {
     yes();
-    onClose();
+    close();
   };
 
   const onSelectNo = () => {
     no();
-    onClose();
+    close();
   };
 
   const buttonChildren = (
