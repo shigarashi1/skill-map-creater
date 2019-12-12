@@ -42,7 +42,12 @@ class ErrorBoundary extends Component<IProps, IState> {
         const onClickReport = () => {
           Sentry.showReportDialog({ eventId: this.state.eventId });
         };
-        return <button onClick={onClickReport}>Report feedback</button>;
+        return (
+          <React.Fragment>
+            <h3>回復不能なエラーが発生しました.</h3>
+            <button onClick={onClickReport}>Report feedback</button>
+          </React.Fragment>
+        );
       }
       return <h3>Something went wrong.</h3>;
     }
