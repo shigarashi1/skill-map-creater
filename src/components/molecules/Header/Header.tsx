@@ -79,16 +79,22 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, histor
           </Button>
         </Toolbar>
       </AppBar>
-      <Menu id="icon-menu" anchorEl={anchorEl} keepMounted={true} open={Boolean(anchorEl)} onClose={onCloseMenu}>
-        {hasSignedIn ? (
-          <React.Fragment>
-            <MenuItem onClick={onClickUserSetting}>User Setting</MenuItem>
-            <MenuItem onClick={onSignOut}>Sign Out</MenuItem>
-          </React.Fragment>
-        ) : (
+      {hasSignedIn ? (
+        <Menu
+          id="icon-menu-signedIn"
+          anchorEl={anchorEl}
+          keepMounted={true}
+          open={Boolean(anchorEl)}
+          onClose={onCloseMenu}
+        >
+          <MenuItem onClick={onClickUserSetting}>User Setting</MenuItem>
+          <MenuItem onClick={onSignOut}>Sign Out</MenuItem>
+        </Menu>
+      ) : (
+        <Menu id="icon-menu" anchorEl={anchorEl} keepMounted={true} open={Boolean(anchorEl)} onClose={onCloseMenu}>
           <MenuItem onClick={onToLoginPage}>Sign In / Up</MenuItem>
-        )}
-      </Menu>
+        </Menu>
+      )}
     </React.Fragment>
   );
 };

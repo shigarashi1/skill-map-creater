@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { Dispatch, bindActionCreators } from 'redux';
 
 import { AppState } from '../../../store';
 import { InfoDialog } from '../../../components/organisms';
-import { Logger } from '../../../models';
+import { UtilsSelector } from '../../../store/selector';
+import { CommonPageActions } from '../../../views';
 
 function mapStateToProps(state: AppState) {
   return {
-    hasOpen: false,
-    title: '',
-    context: '',
+    ...UtilsSelector.dialogs.info(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
+  const { close } = bindActionCreators(CommonPageActions.infoDialog, dispatch);
   return {
-    close: () => Logger.log(''),
+    close: () => close(),
   };
 }
 

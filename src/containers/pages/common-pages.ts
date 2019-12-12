@@ -2,11 +2,11 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { AppState } from '../../store';
 import { CommonPageActions } from '../../views';
 
-export function mapStateToCommonProps(state: AppState) {
+export function mapStateToCommonPageProps(state: AppState) {
   return {};
 }
 
-export function mapDispatchToCommonProps(dispatch: Dispatch) {
+export function mapDispatchToCommonPageProps(dispatch: Dispatch) {
   // TODO: もっと楽したいよねー
   const auth = bindActionCreators(CommonPageActions.auth, dispatch);
   const sidebar = bindActionCreators(CommonPageActions.sidebar, dispatch);

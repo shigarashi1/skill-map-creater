@@ -2,18 +2,18 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store';
-import { mapDispatchToCommonProps } from '../pages/common-pages';
+import { mapDispatchToCommonPageProps } from '../pages/common-pages';
 import { Header } from '../../components/molecules';
 
 function mapStateToProps(state: AppState) {
   return {
-    hasSignedIn: false,
+    hasSignedIn: true,
     username: 'Sample',
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
-  const { auth, sidebar, infoDialog } = mapDispatchToCommonProps(dispatch);
+  const { auth, sidebar, infoDialog } = mapDispatchToCommonPageProps(dispatch);
   return {
     auth,
     sidebar,
