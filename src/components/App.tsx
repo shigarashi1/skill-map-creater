@@ -5,7 +5,7 @@ import { Router } from 'react-router';
 import history from '../helpers/history';
 import { configureStore } from '../store';
 import { ErrorBoundary } from './others';
-import { LoadingSpiner } from '../containers';
+import { LoadingSpiner, InfoDialog } from '../containers';
 import { BrowserTab } from '../backgrounds';
 
 import MainTemplate from './templates/MainTemplate/MainTemplate';
@@ -21,6 +21,7 @@ const App: React.FC = () => {
         </LoadingSpiner>
         <ErrorBoundary>
           <BrowserTab />
+          <InfoDialog />
         </ErrorBoundary>
       </Router>
     </Provider>
