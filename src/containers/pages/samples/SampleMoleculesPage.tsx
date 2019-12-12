@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { SampleMoleculesPage } from '../../../components/pages/samples';
+import { SampleMoleculesPage } from '../../../components/pages/SamplePages';
 import { AppState } from '../../../store';
 import { mapStateToCommonProps, mapDispatchToCommonProps } from './common';
 
