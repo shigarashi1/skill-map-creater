@@ -1,22 +1,28 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router';
 //
+import history from '../helpers/history';
 import { configureStore } from '../store';
 import { ErrorBoundary } from './others';
 import { LoadingSpiner } from '../containers';
 import { BrowserTab } from '../backgrounds';
+
+import MainTemplate from './templates/MainTemplate/MainTemplate';
 
 const store = configureStore({});
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <LoadingSpiner>
-        <div className="App">a</div>
-      </LoadingSpiner>
-      <ErrorBoundary>
-        <BrowserTab />
-      </ErrorBoundary>
+      <Router history={history}>
+        <LoadingSpiner>
+          <MainTemplate />
+        </LoadingSpiner>
+        <ErrorBoundary>
+          <BrowserTab />
+        </ErrorBoundary>
+      </Router>
     </Provider>
   );
 };
