@@ -1,5 +1,8 @@
 {
-  "ignoreFiles": ["node_modules/**/*", ".docs/**/*"],
+  "ignoreFiles": [
+    "node_modules/**/*",
+    "docs/**/*"
+  ],
   "rules": {
     "indentation": 2,
     "string-quotes": "single"
