@@ -6,8 +6,8 @@
     "start": "react-scripts start",
     "build": "cross-env REACT_APP_STAGING_FLAG=1 react-scripts build",
     "build:prod": "react-scripts build",
-    "test": "react-scripts test --setupFiles ./src/configuration/setupTests.ts",
-    "test:nowatch": "cross-env CI=true react-scripts test --setupFiles ./src/configuration/setupTests.ts",
+    "test": "react-scripts test --setupFiles ./src/configuration/setup-tests.ts",
+    "test:nowatch": "cross-env CI=true react-scripts test --setupFiles ./src/configuration/setup-tests.ts",
     "eject": "react-scripts eject",
     "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "docs": "typedoc --out ./.docs --target ES6 --mode file ./src/helpers ./src/types ./src/models ./src/services"
