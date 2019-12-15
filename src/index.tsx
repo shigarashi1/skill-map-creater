@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/browser';
 import * as serviceWorker from './serviceWorker';
+import 'react-app-polyfill/ie11';
 
 import './styles/main.scss';
 import App from './components/App';
