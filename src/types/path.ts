@@ -2,6 +2,7 @@ export enum EPath {
   Login = '/login',
   Home = '/',
   Manual = '/manual',
+  Setting = '/setting',
   //
   Sample = '/sample',
   SampleAtoms = '/sample/atoms',

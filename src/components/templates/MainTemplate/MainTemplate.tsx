@@ -2,9 +2,11 @@ import React from 'react';
 
 import styles from './MainTemplate.module.scss';
 
+import { ErrorBoundary } from '../../others';
+
 import AppRouter from '../../../routers/AppRouter';
 import Header from '../../../containers/components/Header';
-import { ErrorBoundary } from '../../others';
+import Sidebar from '../../../containers/components/Sidebar';
 
 const MainTemplate: React.FC<{}> = () => {
   return (
@@ -17,6 +19,9 @@ const MainTemplate: React.FC<{}> = () => {
           <AppRouter />
         </ErrorBoundary>
       </div>
+      <ErrorBoundary>
+        <Sidebar />
+      </ErrorBoundary>
     </div>
   );
 };
