@@ -2,7 +2,7 @@ export const matchConditionsAll = <T1, T2 = undefined>(
   conditions: Array<[T1, boolean]>,
   defaultValue: T1 | T2,
 ): Array<T1 | T2> => {
-  const matches = conditions.filter(([value, isValid]) => !!isValid).map(([value, isValid]) => value);
+  const matches = conditions.filter(([_, isValid]) => !!isValid).map(([value, _]) => value);
   return matches.length > 0 ? matches : [defaultValue];
 };
 
