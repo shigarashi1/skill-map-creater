@@ -1,5 +1,6 @@
 export enum EPath {
-  Login = '/login',
+  SignIn = '/signIn',
+  SignUp = '/signUp',
   Home = '/',
   Manual = '/manual',
   Setting = '/setting',

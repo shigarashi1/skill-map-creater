@@ -1,18 +1,18 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import styles from './LoginPage.module.scss';
+import styles from './SignInPage.module.scss';
 
 type TProps = {};
 
-const LoginPage: React.FC<TProps> = () => {
+const SignInPage: React.FC<TProps> = () => {
   return (
     <div className={styles.root}>
       <Typography variant="h4" color="inherit">
-        LoginPage
+        SignInPage
       </Typography>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignInPage;

@@ -21,9 +21,19 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       },
     },
     {
-      text: 'SignIn / Up',
+      text: 'SignIn',
       icon: 'input',
-      path: EPath.Login,
+      path: EPath.SignIn,
+      authorization: {
+        isOwner: false,
+        isPrivate: false,
+        isSignedIn: false,
+      },
+    },
+    {
+      text: 'SignUp',
+      icon: 'person_add',
+      path: EPath.SignUp,
       authorization: {
         isOwner: false,
         isPrivate: false,

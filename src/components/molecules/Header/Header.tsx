@@ -49,7 +49,7 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, histor
 
   const onToLoginPage = () => {
     // TODO: action介しての方がよくない？
-    history.push(EPath.Login);
+    history.push(EPath.SignIn);
   };
 
   const onClickUserSetting = () => {
