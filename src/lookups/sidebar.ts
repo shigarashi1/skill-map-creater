@@ -78,19 +78,8 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
             isPrivate: true,
           },
         },
-        // {
-        //   text: 'Authorization',
-        //   icon: 'verified_user',
-        //   path: EPath.SettingAuth,
-        //   authorization: {
-        //     isOwner: true,
-        //     isPrivate: true,
-        //   },
-        // },
       ],
     },
-  ],
-  [
     {
       text: 'How to',
       icon: 'import_contacts',
@@ -100,6 +89,8 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
         isPrivate: false,
       },
     },
+  ],
+  [
     {
       text: 'Sample',
       icon: 'accessibility_new',
