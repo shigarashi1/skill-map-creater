@@ -23,8 +23,12 @@ const OkCancelDialog: React.FC<TOkCancelDialog> = ({ hasOpen, close, title, cont
 
   const buttonChildren = (
     <div className={styles.btnWrapper}>
-      <Button onClick={onCancel}>Cancel</Button>
-      <Button onClick={onOk}>OK</Button>
+      <Button onClick={onCancel} variant="contained" color="secondary">
+        Cancel
+      </Button>
+      <Button onClick={onOk} variant="contained" color="primary">
+        OK
+      </Button>
     </div>
   );
 

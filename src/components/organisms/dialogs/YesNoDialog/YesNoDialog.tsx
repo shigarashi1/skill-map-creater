@@ -23,8 +23,12 @@ const YesNoDialog: React.FC<TYesNoDialog> = ({ hasOpen, title, context, close, y
 
   const buttonChildren = (
     <div className={styles.btnWrapper}>
-      <Button onClick={onSelectNo}>No</Button>
-      <Button onClick={onSelectYes}>Yes</Button>
+      <Button onClick={onSelectNo} variant="contained" color="secondary">
+        No
+      </Button>
+      <Button onClick={onSelectYes} variant="contained" color="primary">
+        Yes
+      </Button>
     </div>
   );
 

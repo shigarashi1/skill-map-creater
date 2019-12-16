@@ -21,7 +21,9 @@ const InfoDialog: React.FC<TInfoDialog> = ({ hasOpen, title, context, ok, close 
 
   const buttonChildren = (
     <div className={styles.btnWrapper}>
-      <Button onClick={onOk}>OK</Button>
+      <Button onClick={onOk} variant="contained">
+        OK
+      </Button>
     </div>
   );
 
