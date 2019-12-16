@@ -78,15 +78,15 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
             isPrivate: true,
           },
         },
-        {
-          text: 'Authorization',
-          icon: 'verified_user',
-          path: EPath.SettingAuth,
-          authorization: {
-            isOwner: true,
-            isPrivate: true,
-          },
-        },
+        // {
+        //   text: 'Authorization',
+        //   icon: 'verified_user',
+        //   path: EPath.SettingAuth,
+        //   authorization: {
+        //     isOwner: true,
+        //     isPrivate: true,
+        //   },
+        // },
       ],
     },
   ],
@@ -110,7 +110,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       },
       children: [
         {
-          text: 'SampleAtoms',
+          text: 'Atoms',
           path: EPath.SampleAtoms,
           authorization: {
             isOwner: false,
@@ -118,7 +118,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
           },
         },
         {
-          text: 'SampleMolecules',
+          text: 'Molecules',
           path: EPath.SampleMolecules,
           authorization: {
             isOwner: false,
@@ -126,7 +126,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
           },
         },
         {
-          text: 'SampleOrganisms',
+          text: 'Organisms',
           path: EPath.SampleOrganisms,
           authorization: {
             isOwner: false,
