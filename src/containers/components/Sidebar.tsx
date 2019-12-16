@@ -4,21 +4,19 @@ import { Dispatch, bindActionCreators } from 'redux';
 import Sidebar from '../../components/organisms/Sidebar/Sidebar';
 
 import { AppState } from '../../store';
-import { UtilsSelector, RouterSelector } from '../../store/selector';
+import { UtilsSelector } from '../../store/selector';
 import { CommonPageActions } from '../../views';
 
 function mapStateToProps(state: AppState) {
   return {
     hasOpened: UtilsSelector.sidebar.hasOpened(state),
-    // currentPath: RouterSelector.currentPath(state),
-    currentPath: window.location.pathname,
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
   const { close } = bindActionCreators(CommonPageActions.sidebar, dispatch);
   return {
-    close: () => close(),
+    close,
   };
 }
 

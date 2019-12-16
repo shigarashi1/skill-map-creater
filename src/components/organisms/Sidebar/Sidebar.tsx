@@ -16,18 +16,14 @@ import styles from './Sidebar.module.scss';
 import { EPath } from '../../../types';
 import { SIDEBAR_LIST } from '../../../lookups';
 import { TSidebarProps } from '../../../containers/components/Sidebar';
-import { Logger } from '../../../models';
-
-// import { SIDEBAR_LIST } from '../../../lookups/sidebar';
 
 type TProps = RouteComponentProps & TSidebarProps;
 
-const Sidebar: React.FC<TProps> = (props: TProps) => {
-  Logger.log('sidebar props', props);
-  const { history, hasOpened, currentPath } = props;
+const Sidebar: React.FC<TProps> = ({ history, hasOpened, close }) => {
+  const currentPath = window.location.pathname;
 
   const onClose = () => {
-    // props.onTogleSidebar(false);
+    close();
   };
 
   const getClassName = (path: EPath): string => {
@@ -72,13 +68,8 @@ const Sidebar: React.FC<TProps> = (props: TProps) => {
 
   return (
     <nav>
-      <Hidden mdUp={true} implementation="css">
+      <Hidden implementation="css">
         <Drawer variant="temporary" anchor="right" open={hasOpened} onClose={onClose}>
-          {renderSidebarContent()}
-        </Drawer>
-      </Hidden>
-      <Hidden mdDown={true} implementation="css">
-        <Drawer variant="permanent" open={hasOpened} onClose={onClose}>
           {renderSidebarContent()}
         </Drawer>
       </Hidden>
