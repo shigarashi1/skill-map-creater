@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
-import { RouterState } from 'connected-react-router';
+import { getLocation } from 'connected-react-router';
 
 import { AppState } from '..';
 
-const featureSelector = (state: AppState): RouterState => state.router;
+const appStateSelector = (state: AppState): AppState => state;
 
 export const RouterSelector = {
-  currentPath: createSelector(featureSelector, (state) => state.location.pathname),
+  currentPath: createSelector(appStateSelector, (state) => getLocation(state).pathname),
 };
