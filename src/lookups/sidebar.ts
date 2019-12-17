@@ -3,15 +3,6 @@ import { EPath, TSidebarListItem } from '../types';
 export const SIDEBAR_LIST: TSidebarListItem[][] = [
   [
     {
-      text: 'Home',
-      icon: 'home',
-      path: EPath.Home,
-      authorization: {
-        isOwner: true,
-        isPrivate: true,
-      },
-    },
-    {
       text: 'SignIn',
       icon: 'input',
       path: EPath.SignIn,
@@ -33,6 +24,33 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
     },
   ],
   [
+    {
+      text: 'Home',
+      icon: 'home',
+      path: EPath.Home,
+      authorization: {
+        isOwner: false,
+        isPrivate: false,
+      },
+    },
+    {
+      text: 'Skill Input',
+      icon: 'edit',
+      path: EPath.SkillInput,
+      authorization: {
+        isOwner: true,
+        isPrivate: true,
+      },
+    },
+    {
+      text: 'Skill Map',
+      icon: 'map',
+      path: EPath.SkillMap,
+      authorization: {
+        isOwner: true,
+        isPrivate: true,
+      },
+    },
     {
       text: 'Setting',
       icon: 'settings',

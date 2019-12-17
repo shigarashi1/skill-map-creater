@@ -91,6 +91,7 @@ const Sidebar: React.FC<TProps> = ({ history, hasOpened, close }) => {
         {SIDEBAR_LIST.map((menuList, index) => {
           return (
             <React.Fragment key={index}>
+              <Divider className={styles.padding} />
               <Divider />
               {menuList.map(renderListItem)}
             </React.Fragment>
