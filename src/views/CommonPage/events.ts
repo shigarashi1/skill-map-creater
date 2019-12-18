@@ -6,7 +6,8 @@ import { mergeMap, map } from 'rxjs/operators';
 import { AppState } from '../../store';
 import { CommonPageActions } from '.';
 import { infoDialogActions, yesNoDialogActions, okCancelDialogActions, sidebarActions } from '../../store/utils';
-import { TInfoDialog, TYesNoDialog, TOkCancelDialog } from '../../types';
+import { TInfoDialog, TYesNoDialog, TOkCancelDialog, EPath } from '../../types';
+import { routerActions } from '../../store/router';
 
 const signOut: Epic<AnyAction, Action<void>, AppState> = (action$, store) =>
   action$.pipe(
@@ -62,6 +63,19 @@ const closeOkCancelDialog: Epic<AnyAction, Action<void>, AppState> = (action$, s
     map(({ payload }) => okCancelDialogActions.close()),
   );
 
+const routerPush: Epic<AnyAction, Action<EPath>, AppState> = (action$, store) =>
+  action$.pipe(
+    ofAction(CommonPageActions.router.push),
+    // 将来的にはページ遷移していいかを確認して処理する
+    map(({ payload }) => routerActions.push(payload)),
+  );
+
+const routerReplace: Epic<AnyAction, Action<EPath>, AppState> = (action$, store) =>
+  action$.pipe(
+    ofAction(CommonPageActions.router.replace),
+    map(({ payload }) => routerActions.replace(payload)),
+  );
+
 export const CommonPageListener = combineEpics(
   signOut,
   showSidebar,
@@ -72,4 +86,6 @@ export const CommonPageListener = combineEpics(
   closeYesNoDialog,
   showOkCancelDialog,
   closeOkCancelDialog,
+  routerPush,
+  routerReplace,
 );

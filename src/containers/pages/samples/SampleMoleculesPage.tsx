@@ -3,17 +3,17 @@ import { Dispatch } from 'redux';
 
 import { SampleMoleculesPage } from '../../../components/pages/SamplePages';
 import { AppState } from '../../../store';
-import { mapStateToCommonProps, mapDispatchToCommonProps } from './common';
+import { mapStateToSamplePageCommonProps, mapDispatchToSamplePageCommonProps } from './common';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    ...mapStateToCommonProps(state),
+    ...mapStateToSamplePageCommonProps(state),
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...mapDispatchToCommonProps(dispatch),
+    ...mapDispatchToSamplePageCommonProps(dispatch),
   };
 };
 

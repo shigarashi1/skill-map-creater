@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router';
 //
 import history from '../helpers/history';
 import { configureStore } from '../store';
@@ -15,7 +15,7 @@ const store = configureStore({});
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <ErrorBoundary>
           <LoadingSpiner>
             <MainTemplate />
@@ -27,7 +27,7 @@ const App: React.FC = () => {
             <YesNoDialog />
           </ErrorBoundary>
         </ErrorBoundary>
-      </Router>
+      </ConnectedRouter>
     </Provider>
   );
 };

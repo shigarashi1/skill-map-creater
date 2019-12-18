@@ -1,22 +1,24 @@
 import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
+import { Dispatch } from 'redux';
 
 import Sidebar from '../../components/organisms/Sidebar/Sidebar';
 
 import { AppState } from '../../store';
-import { UtilsSelector } from '../../store/selector';
-import { CommonPageActions } from '../../views';
+import { UtilsSelector, RouterSelector } from '../../store/selector';
+import { mapDispatchToCommonProps } from '../common';
 
 const mapStateToProps = (state: AppState) => {
   return {
     hasOpened: UtilsSelector.sidebar.hasOpened(state),
+    currentPath: RouterSelector.currentPath(state),
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  const { close } = bindActionCreators(CommonPageActions.sidebar, dispatch);
+  const { sidebar, router } = mapDispatchToCommonProps(dispatch);
   return {
-    close,
+    sidebar,
+    router,
   };
 };
 

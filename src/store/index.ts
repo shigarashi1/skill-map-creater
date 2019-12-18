@@ -23,6 +23,7 @@ import { utilsReducers, clearDialogEpics } from './utils';
 // epics
 import { eventListenerEpics } from '../views';
 import { middlewareEpics } from '../middlewares';
+import { routerEpics } from './router';
 import { Logger } from '../models';
 
 // reducer
@@ -49,7 +50,7 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // epic
-const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics, clearDialogEpics);
+const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics, clearDialogEpics, routerEpics);
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>();
 const crashSentryReporter = (api: MiddlewareAPI) => (next: Dispatch<AnyAction>) => (action: any) => {
   try {

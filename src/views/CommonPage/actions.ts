@@ -1,5 +1,5 @@
 import { actionCreatorFactory } from 'typescript-fsa';
-import { TInfoDialog, TYesNoDialog, TOkCancelDialog } from '../../types';
+import { TInfoDialog, TYesNoDialog, TOkCancelDialog, EPath } from '../../types';
 
 // actions
 const ac = actionCreatorFactory('[views/CommonPage]');
@@ -33,4 +33,10 @@ export const CommonPageActions = {
   // snackbar
 
   // error
+
+  // router
+  router: {
+    push: ac<EPath>('router-push'),
+    replace: ac<EPath>('router-replace'),
+  },
 };

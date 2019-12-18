@@ -1,13 +1,13 @@
 import { Dispatch } from 'redux';
 import { AppState } from '../../../store';
-import { mapDispatchToCommonPageProps } from '../common-pages';
+import { mapDispatchToCommonProps } from '../../common';
 
-export function mapStateToCommonProps(state: AppState) {
+export function mapStateToSamplePageCommonProps(state: AppState) {
   return {};
 }
 
-export function mapDispatchToCommonProps(dispatch: Dispatch) {
+export function mapDispatchToSamplePageCommonProps(dispatch: Dispatch) {
   return {
-    ...mapDispatchToCommonPageProps(dispatch),
+    ...mapDispatchToCommonProps(dispatch),
   };
 }

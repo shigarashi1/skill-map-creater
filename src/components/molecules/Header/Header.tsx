@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import { RouteComponentProps, withRouter } from 'react-router';
 
 import styles from './Header.module.scss';
 
@@ -15,12 +14,11 @@ import { Nullable, EPath } from '../../../types';
 import { Logger } from '../../../models';
 import { THeaderProps } from '../../../containers/components/Header';
 
-type TProps = THeaderProps &
-  RouteComponentProps & {
-    isStatic?: boolean;
-  };
+type TProps = THeaderProps & {
+  isStatic?: boolean;
+};
 
-const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, history, isStatic, infoDialog }) => {
+const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router, isStatic, infoDialog }) => {
   const [anchorEl, setAnchorEl] = useState<Nullable<HTMLElement>>(null);
 
   const onOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -48,8 +46,7 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, histor
   };
 
   const onToLoginPage = () => {
-    // TODO: action介しての方がよくない？
-    history.push(EPath.SignIn);
+    router.push(EPath.SignIn);
   };
 
   const onClickUserSetting = () => {
@@ -99,4 +96,4 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, histor
   );
 };
 
-export default withRouter(Header);
+export default Header;

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
+import { Dispatch } from 'redux';
 
 import { AppState } from '../../../store';
 import { OkCancelDialog } from '../../../components/organisms';
 import { UtilsSelector } from '../../../store/selector';
-import { CommonPageActions } from '../../../views';
+import { mapDispatchToCommonProps } from '../../common';
 
 const mapStateToProps = (state: AppState) => {
   return {
@@ -13,9 +13,9 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  const { close } = bindActionCreators(CommonPageActions.okCancelDialog, dispatch);
+  const { okCancelDialog } = mapDispatchToCommonProps(dispatch);
   return {
-    close: () => close(),
+    ...okCancelDialog,
   };
 };
 

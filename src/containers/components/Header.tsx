@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store';
-import { mapDispatchToCommonPageProps } from '../pages/common-pages';
+import { mapDispatchToCommonProps } from '../common';
 import { Header } from '../../components/molecules';
 
 const mapStateToProps = (state: AppState) => {
@@ -13,11 +13,12 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  const { auth, sidebar, infoDialog } = mapDispatchToCommonPageProps(dispatch);
+  const { auth, sidebar, infoDialog, router } = mapDispatchToCommonProps(dispatch);
   return {
     auth,
     sidebar,
     infoDialog,
+    router,
   };
 };
 
