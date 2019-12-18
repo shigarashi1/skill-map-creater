@@ -98,10 +98,21 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
         },
       ],
     },
+  ],
+  [
     {
       text: 'How to',
       icon: 'import_contacts',
       path: EPath.Manual,
+      authorization: {
+        isOwner: false,
+        isPrivate: false,
+      },
+    },
+    {
+      text: 'Technology',
+      icon: 'desktop_mac',
+      path: EPath.Technology,
       authorization: {
         isOwner: false,
         isPrivate: false,

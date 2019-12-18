@@ -1,10 +1,12 @@
 export enum EPath {
+  /** トップ画面 */
+  Top = '/',
   /** ログイン画面 */
-  SignIn = '/signIn',
+  SignIn = '/login',
   /** 登録画面 */
-  SignUp = '/signUp',
+  SignUp = '/sign-up',
   /** ホーム画面 */
-  Home = '/',
+  Home = '/home',
 
   /** 設定親画面 */
   Setting = '/setting',
