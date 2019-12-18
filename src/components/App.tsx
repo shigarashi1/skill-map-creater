@@ -16,14 +16,16 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router history={history}>
-        <LoadingSpiner>
-          <MainTemplate />
-        </LoadingSpiner>
         <ErrorBoundary>
-          <BrowserTab />
-          <InfoDialog />
-          <OkCancelDialog />
-          <YesNoDialog />
+          <LoadingSpiner>
+            <MainTemplate />
+          </LoadingSpiner>
+          <ErrorBoundary>
+            <BrowserTab />
+            <InfoDialog />
+            <OkCancelDialog />
+            <YesNoDialog />
+          </ErrorBoundary>
         </ErrorBoundary>
       </Router>
     </Provider>
