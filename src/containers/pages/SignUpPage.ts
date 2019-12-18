@@ -5,13 +5,13 @@ import { AppState } from '../../store';
 
 import SignUpPage from '../../components/pages/SignUpPage/SignUpPage';
 
-function mapStateToProps(state: AppState) {
+const mapStateToProps = (state: AppState) => {
   return {};
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch) {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {};
-}
+};
 
 export type TPageProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

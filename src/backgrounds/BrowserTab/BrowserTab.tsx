@@ -3,15 +3,15 @@ import { Dispatch } from 'redux';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-function mapStateToProps(state: AppState) {
+const mapStateToProps = (state: AppState) => {
   return {
     title: '',
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch) {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {};
-}
+};
 
 type TProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

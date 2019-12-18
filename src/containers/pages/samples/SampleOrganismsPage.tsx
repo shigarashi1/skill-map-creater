@@ -5,17 +5,17 @@ import { SampleAtomsPage } from '../../../components/pages/SamplePages';
 import { AppState } from '../../../store';
 import { mapStateToCommonProps, mapDispatchToCommonProps } from './common';
 
-function mapStateToProps(state: AppState) {
+const mapStateToProps = (state: AppState) => {
   return {
     ...mapStateToCommonProps(state),
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch) {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...mapDispatchToCommonProps(dispatch),
   };
-}
+};
 
 export type TSampleOrganismsPageProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

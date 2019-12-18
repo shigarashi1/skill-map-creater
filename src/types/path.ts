@@ -24,7 +24,7 @@ export enum EPath {
   /** スキルマップ表示画面 */
   SkillMap = '/skill-map',
 
-  /** サンプル親画面 */
+  /** サンプル画面 */
   Sample = '/sample',
   SampleAtoms = '/sample/atoms',
   SampleMolecules = '/sample/molecules',
@@ -32,4 +32,10 @@ export enum EPath {
 
   /** マニュアル画面 */
   Manual = '/manual',
+  /** 技術画面 */
+  Technology = '/technology',
+  /** 403画面 */
+  Forbidden = '/forbidden',
+  /** 404画面 */
+  NotFound = '/not-found',
 }

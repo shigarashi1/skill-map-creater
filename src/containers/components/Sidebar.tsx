@@ -7,18 +7,18 @@ import { AppState } from '../../store';
 import { UtilsSelector } from '../../store/selector';
 import { CommonPageActions } from '../../views';
 
-function mapStateToProps(state: AppState) {
+const mapStateToProps = (state: AppState) => {
   return {
     hasOpened: UtilsSelector.sidebar.hasOpened(state),
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch) {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   const { close } = bindActionCreators(CommonPageActions.sidebar, dispatch);
   return {
     close,
   };
-}
+};
 
 export type TSidebarProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
