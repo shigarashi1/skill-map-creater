@@ -86,15 +86,17 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, router, currentPath }) 
             <Icon>chevron_right_icon</Icon>
           </IconButton>
         </Toolbar>
-        {SIDEBAR_LIST.map((menuList, index) => {
-          return (
-            <React.Fragment key={index}>
-              <Divider className={styles.padding} />
-              <Divider />
-              {menuList.map(renderListItem)}
-            </React.Fragment>
-          );
-        })}
+        <div className={styles.listContainer}>
+          {SIDEBAR_LIST.map((menuList, index) => {
+            return (
+              <React.Fragment key={index}>
+                <Divider className={styles.padding} />
+                <Divider />
+                {menuList.map(renderListItem)}
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     );
   };

@@ -1,6 +1,9 @@
 // @types
 .list {
-  min-width: 150px;
+  min-width: 180px;
+  .listContainer {
+    overflow-y: scroll;
+  }
   .listItemActive {
     background-color: rgba(0, 0, 0, 0.5) !important;
     > div {
