@@ -16,7 +16,7 @@ const SampleOrganismsPage: React.FC<TProps> = () => {
       title: 'test',
       contexts: 'test',
       node: <p>console log</p>,
-      onAction: () => console.log('test'),
+      action: () => console.log('test'),
     },
   ];
 

@@ -6,7 +6,7 @@ import { mergeMap, map } from 'rxjs/operators';
 import { AppState } from '../../store';
 import { CommonPageActions } from '.';
 import { infoDialogActions, yesNoDialogActions, okCancelDialogActions, sidebarActions } from '../../store/utils';
-import { TInfoDialog, TYesNoDialog, TOkCancelDialog, EPath } from '../../types';
+import { EPath, WrapAction } from '../../types';
 import { routerActions } from '../../store/router';
 
 const signOut: Epic<AnyAction, Action<void>, AppState> = (action$, store) =>
@@ -27,7 +27,7 @@ const closeSidebar: Epic<AnyAction, Action<void>, AppState> = (action$, store) =
     map(({ payload }) => sidebarActions.close()),
   );
 
-const showInfoDialog: Epic<AnyAction, Action<TInfoDialog>, AppState> = (action$, store) =>
+const showInfoDialog: Epic<AnyAction, WrapAction<typeof infoDialogActions.show>, AppState> = (action$, store) =>
   action$.pipe(
     ofAction(CommonPageActions.infoDialog.show),
     map(({ payload }) => infoDialogActions.show(payload)),
@@ -39,7 +39,7 @@ const closeInfoDialog: Epic<AnyAction, Action<void>, AppState> = (action$, store
     map(({ payload }) => infoDialogActions.close()),
   );
 
-const showYesNoDialog: Epic<AnyAction, Action<TYesNoDialog>, AppState> = (action$, store) =>
+const showYesNoDialog: Epic<AnyAction, WrapAction<typeof yesNoDialogActions.show>, AppState> = (action$, store) =>
   action$.pipe(
     ofAction(CommonPageActions.yesNoDialog.show),
     map(({ payload }) => yesNoDialogActions.show(payload)),
@@ -51,7 +51,7 @@ const closeYesNoDialog: Epic<AnyAction, Action<void>, AppState> = (action$, stor
     map(({ payload }) => yesNoDialogActions.close()),
   );
 
-const showOkCancelDialog: Epic<AnyAction, Action<TOkCancelDialog>, AppState> = (action$, store) =>
+const showOkCancelDialog: Epic<AnyAction, WrapAction<typeof okCancelDialogActions.show>, AppState> = (action$, store) =>
   action$.pipe(
     ofAction(CommonPageActions.okCancelDialog.show),
     map(({ payload }) => okCancelDialogActions.show(payload)),

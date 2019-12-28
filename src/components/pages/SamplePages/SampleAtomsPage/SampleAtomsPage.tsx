@@ -16,7 +16,7 @@ const SampleAtomsPage: React.FC<TProps> = () => {
       title: 'test',
       contexts: 'test',
       node: <p>console log</p>,
-      onAction: () => {
+      action: () => {
         console.log('test');
       },
     },

@@ -1,5 +1,6 @@
 import { actionCreatorFactory } from 'typescript-fsa';
-import { TInfoDialog, TYesNoDialog, TOkCancelDialog, EPath } from '../../types';
+import { EPath, ActionParameters } from '../../types';
+import { infoDialogActions, yesNoDialogActions, okCancelDialogActions } from '../../store/utils';
 
 // actions
 const ac = actionCreatorFactory('[views/CommonPage]');
@@ -17,17 +18,17 @@ export const CommonPageActions = {
   },
   // info
   infoDialog: {
-    show: ac<TInfoDialog>('showInfoDialog'),
+    show: ac<ActionParameters<typeof infoDialogActions.show>>('showInfoDialog'),
     close: ac<void>('closeInfoDialog'),
   },
   // yes-no
   yesNoDialog: {
-    show: ac<TYesNoDialog>('showYesNoDialog'),
+    show: ac<ActionParameters<typeof yesNoDialogActions.show>>('showYesNoDialog'),
     close: ac<void>('closeYesNoDialog'),
   },
   // ok-cancel
   okCancelDialog: {
-    show: ac<TOkCancelDialog>('showOkCancelDialog'),
+    show: ac<ActionParameters<typeof okCancelDialogActions.show>>('showOkCancelDialog'),
     close: ac<void>('closeOkCancelDialog'),
   },
   // snackbar

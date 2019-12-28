@@ -37,7 +37,6 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
     infoDialog.show({
       title: 'ログアウト確認',
       context: 'ログアウトします。よろしいですか？',
-      hasOpen: true,
       close: () => {},
       ok: () => {
         auth.signOut();
