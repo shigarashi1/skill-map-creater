@@ -21,7 +21,7 @@ const initialState: TOkCancelDialog = {
   close: () => console.log('close'),
 };
 const reducers = reducerWithInitialState(initialState)
-  .case(actions.show, (state, payload) => ({ ...state, hasOpen: true, payload }))
+  .case(actions.show, (state, payload) => ({ ...state, hasOpen: true, ...payload }))
   .case(actions.close, (state, payload) => ({ ...state, hasOpen: false }))
   .case(actions.clear, (state, payload) => ({ ...initialState }));
 export const okCancelDialogReducers = reducers;

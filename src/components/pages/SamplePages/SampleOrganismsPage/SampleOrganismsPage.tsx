@@ -10,13 +10,40 @@ import { TSampleOrganismsPageProps } from '../../../../containers/pages';
 
 type TProps = TSampleOrganismsPageProps;
 
-const SampleOrganismsPage: React.FC<TProps> = () => {
+const SampleOrganismsPage: React.FC<TProps> = ({ infoDialog, okCancelDialog, yesNoDialog }) => {
   const Samples = [
     {
-      title: 'test',
-      contexts: 'test',
-      node: <p>console log</p>,
-      action: () => console.log('test'),
+      title: 'infoDialog',
+      contexts: 'infoDialog show',
+      action: () => {
+        infoDialog.show({ title: 'infoDialog', context: 'infoinfoinfoinfoinfo', close: () => {} });
+      },
+    },
+    {
+      title: 'okCancelDialog',
+      contexts: 'okCancelDialog show',
+      action: () => {
+        okCancelDialog.show({
+          title: 'okCancelDialog',
+          context: 'okCancelokCancelokCancelokCancelokCancelokCancel',
+          ok: () => console.log('ok'),
+          cancel: () => console.log('cancel'),
+          close: () => {},
+        });
+      },
+    },
+    {
+      title: 'yesNoDialog',
+      contexts: 'yesNoDialog show',
+      action: () => {
+        yesNoDialog.show({
+          title: 'yesNoDialog',
+          context: 'yesNoyesNoyesNoyesNoyesNoyesNoyesNoyesNoyesNoyesNo',
+          yes: () => console.log('yes'),
+          no: () => console.log('no'),
+          close: () => {},
+        });
+      },
     },
   ];
 

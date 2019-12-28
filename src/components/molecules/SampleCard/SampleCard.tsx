@@ -12,14 +12,14 @@ type TProps = {
   title?: string;
   contexts: string;
   action?: () => void;
-  node: React.ReactNode;
+  node?: React.ReactNode;
 };
 
 const SampleCard: React.FC<TProps> = ({ title, contexts, action, node }) => {
   return (
     <Card id={styles.container} square={true}>
       {title ? <CardHeader title={title} /> : null}
-      <CardContent>{node}</CardContent>
+      <CardContent>{node ? node : null}</CardContent>
       <CardContent>
         <Typography variant="body2">{contexts}</Typography>
       </CardContent>
