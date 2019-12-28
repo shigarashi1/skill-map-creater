@@ -1,15 +1,20 @@
 ### backgrounds
-- ここにはbackgroundで動かしたいコンポーネントをおく（描画しないやつ）
+
+- ここには background で動かしたいコンポーネントをおく（描画しないやつ）
 
 ### components
+
 - ここにはコンポーネントをおく
 
 ### configuration
+
 - 設定を置く
-- privateには機密情報を置く（.gitignoreに追加するのを忘れずに）
+- private には機密情報を置く（.gitignore に追加するのを忘れずに）
 
 ### containers
-- `components`と`store`をconnectする
+
+- `components`と`store`を connect する
+
 ```
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -28,41 +33,54 @@ export default connect(mapStateToProps, mapDispatchToProps)(SamplePage);
 ```
 
 ### guards
-- ここにはrouterを制御するコンポーネントをおく
+
+- ここには router を制御するコンポーネントをおく
 - ログインしていないと表示できないページの管理とか
 
 ### helpers
+
 - 共通関数を置く（イミュータブルなやつ）
 
 ### i18n
+
 - 言語変換に関するものを置く
 
 ### lib
+
 - ライブラリ的な奴を書く
 
 ### lookups
+
 - 定数を置く
 
 ### middlewares
-- APIとの通信を担う処理を書く
+
+- API との通信を担う処理を書く
 
 ### models
-- classを置く
+
+- class を置く
 
 ### routers
-- routerを置く
+
+- router を置く
 
 ### services
+
 - 副作用を伴う処理を書く
 
 ### store
-- reduxのstateに関するものを書く
+
+- redux の state に関するものを書く
 
 ### styles
-- cssファイルを置く
+
+- css ファイルを置く
 
 ### types
+
 - 型定義を書く
 
 ### views
+
 - コンポーネントに
