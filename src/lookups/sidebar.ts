@@ -157,10 +157,3 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
     },
   ],
 ];
-
-export const SUB_ROUTERS = [
-  {
-    root: EPath.Sample,
-    children: [EPath.SampleAtoms, EPath.SampleMolecules, EPath.SampleOrganisms],
-  },
-];
