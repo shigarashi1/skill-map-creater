@@ -38,7 +38,7 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
     <div id={styles.root}>
       <PageTitle />
       <Grid className={styles.grid} container={true} spacing={2} alignContent="center" justify="center">
-        <Grid item={true} xs={12} sm={12} md={6} lg={6} xl={3}>
+        <Grid item={true}>
           <Card className={styles.card}>
             <CardHeader className={styles.header} title={<I18nText i18nObj={Page.SignInPage.formTitle} />} />
             <CardContent className={styles.card}>
@@ -72,15 +72,6 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
                 </div>
               </div>
             </CardContent>
-            <CardContent className={styles.card}>
-              <div className={styles.linkWrap}>
-                <Typography>
-                  <Link to={EPath.SignUp}>
-                    <I18nText i18nObj={Page.SignInPage.createAccountLink} />
-                  </Link>
-                </Typography>
-              </div>
-            </CardContent>
             <CardActions className={styles.action}>
               <Button onClick={onClear} variant="contained">
                 <I18nText i18nObj={Page.SignInPage.clearBtn} />
@@ -92,6 +83,13 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
           </Card>
         </Grid>
       </Grid>
+      <div className={styles.linkWrapCreate}>
+        <Typography>
+          <Link to={EPath.SignUp}>
+            <I18nText i18nObj={Page.SignInPage.createAccountLink} />
+          </Link>
+        </Typography>
+      </div>
     </div>
   );
 };

@@ -7,11 +7,17 @@
   }
   .card {
     padding-top: 0;
+    width: 350px;
   }
   .linkWrap {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  }
+  .linkWrapCreate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .action {
     width: 100%;

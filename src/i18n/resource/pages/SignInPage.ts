@@ -1,7 +1,7 @@
 export const SignInPage = {
   formTitle: {
-    jp: 'Skill Map Creater にログイン',
-    en: 'Login Skill Map Creater',
+    jp: 'Skill Map Creater',
+    en: 'Sign in to Skill Map Creater',
   },
   email: {
     jp: 'メールアドレス',
