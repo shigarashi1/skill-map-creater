@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { SampleAtomsPage } from '../../../components/pages/SamplePages';
+import SampleOrganismsPage from '../../../components/pages/SamplePages/SampleOrganismsPage/SampleOrganismsPage';
 import { AppState } from '../../../store';
 import { mapStateToSamplePageCommonProps, mapDispatchToSamplePageCommonProps } from './common';
 
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 export type TSampleOrganismsPageProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
-export default connect(mapStateToProps, mapDispatchToProps)(SampleAtomsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SampleOrganismsPage);

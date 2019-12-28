@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -10,6 +9,7 @@ import styles from './SamplePageTemplate.module.scss';
 import SamplePageRouter from '../../../routers/sub/SampleRouter';
 import { EPath } from '../../../types';
 import { matchCondition } from '../../../helpers';
+import PageTitle from '../../../containers/components/PageTitle';
 
 const LABELS = ['Atoms', 'Molecules', 'Organisms'];
 
@@ -42,9 +42,7 @@ const SamplePageTemplate: React.FC<TProps> = ({ history }) => {
   return (
     <div id={styles.root}>
       <div className={styles.title}>
-        <Typography variant="h4" color="inherit">
-          Sample Page
-        </Typography>
+        <PageTitle />
       </div>
       <div className={styles.tab}>
         <AppBar position="static">

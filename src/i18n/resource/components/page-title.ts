@@ -27,4 +27,8 @@ export const pageTitle = {
     jp: '技術情報',
     en: 'Technology Page',
   },
+  Sample: {
+    jp: 'サンプル',
+    en: 'Sample',
+  },
 };
