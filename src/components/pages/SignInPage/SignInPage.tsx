@@ -1,16 +1,14 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 
 import styles from './SignInPage.module.scss';
+import PageTitle from '../../../containers/components/PageTitle';
 
 type TProps = {};
 
 const SignInPage: React.FC<TProps> = () => {
   return (
     <div className={styles.root}>
-      <Typography variant="h4" color="inherit">
-        SignInPage
-      </Typography>
+      <PageTitle />
     </div>
   );
 };

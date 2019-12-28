@@ -2,11 +2,13 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store';
-import LoadingSpiner from '../../components/atoms/LoadingSpiner/LoadingSpiner';
+
+import I18nText from '../../components/atoms/I18nText/I18nText';
+import { ELangCode } from '../../types';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    isLoading: false,
+    langCode: ELangCode.jp,
   };
 };
 
@@ -14,4 +16,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadingSpiner);
+export default connect(mapStateToProps, mapDispatchToProps)(I18nText);
