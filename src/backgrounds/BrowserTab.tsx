@@ -1,8 +1,8 @@
-import { AppState } from '../../store';
+import { AppState } from '../store';
 import { Dispatch } from 'redux';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { MAIN_TITLE } from '../../lookups';
+import { MAIN_TITLE } from '../lookups';
 
 const mapStateToProps = (state: AppState) => {
   return {

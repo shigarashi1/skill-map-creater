@@ -7,7 +7,7 @@ import { configureStore } from '../store';
 import { ErrorBoundary } from './others';
 import { LoadingSpiner, InfoDialog, OkCancelDialog, YesNoDialog } from '../containers';
 
-import BrowserTab from '../backgrounds/BrowserTab/BrowserTab';
+import BrowserTab from '../backgrounds/BrowserTab';
 import MainTemplate from './templates/MainTemplate/MainTemplate';
 
 const store = configureStore({});
