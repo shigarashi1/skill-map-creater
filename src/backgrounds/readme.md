@@ -1,3 +1,0 @@
-### backgrounds
-
-ここにはbackgroundで動かしたいコンポーネントをおく
