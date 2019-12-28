@@ -1,4 +1,24 @@
 // @types
 #root {
-  font-size: 10px;
+  min-height: 100vh;
+  .grid {
+    min-height: 50vh;
+    padding: 10px;
+  }
+  .card {
+    padding-top: 0;
+  }
+  .linkWrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .action {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    > button {
+      margin: 0 20px;
+    }
+  }
 }

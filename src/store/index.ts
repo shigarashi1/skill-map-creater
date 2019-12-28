@@ -14,17 +14,19 @@ import createSentryMiddleware from 'redux-sentry-middleware';
 import * as Sentry from '@sentry/browser';
 //
 import history from '../helpers/history';
+import { Logger } from '../models';
+//
 import { sampleReducers, sampleEpics } from './__sample';
 import { rootActions } from './actions';
 
 // reducers
 import { utilsReducers, clearDialogEpics } from './utils';
+import { pageReducers } from './pages';
 
 // epics
 import { eventListenerEpics } from '../views';
 import { middlewareEpics } from '../middlewares';
 import { routerEpics } from './router';
-import { Logger } from '../models';
 
 // reducer
 export const reducers = combineReducers({
@@ -36,7 +38,7 @@ export const reducers = combineReducers({
   // target: targetReducers,
   // record: recordReducers,
   // error: errorReducers,
-  // pages: pageReducer,
+  pages: pageReducers,
   // sample is not used
   sample: sampleReducers,
 });

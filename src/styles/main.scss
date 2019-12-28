@@ -12,3 +12,12 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+// ====================================================
+// material-ui overwrite
+// ====================================================
+.MuiOutlinedInput-root {
+  .MuiOutlinedInput-input {
+    padding: 10px 7px;
+  }
+}
