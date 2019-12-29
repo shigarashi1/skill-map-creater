@@ -61,7 +61,7 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
   return (
     <React.Fragment>
       <AppBar id={styles.container} position={isStatic ? 'static' : 'fixed'}>
-        <Toolbar>
+        <Toolbar className={styles.left}>
           <IconButton color="inherit" aria-label="Menu" onClick={onOpen}>
             <Icon>menu_icon</Icon>
           </IconButton>
