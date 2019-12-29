@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Icon from '@material-ui/core/Icon';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
 
 import styles from './Header.module.scss';
 
@@ -66,7 +68,9 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
           </Typography>
         </Toolbar>
         <Toolbar className={styles.right}>
-          <LanguageSelect />
+          <Hidden xsDown={true}>
+            <LanguageSelect />
+          </Hidden>
           <Button onClick={onOpenMenu} color="inherit">
             {username ? (
               <Typography className={styles.username} variant="subtitle2" color="inherit">
