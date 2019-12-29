@@ -64,8 +64,7 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
                 </WithLabel>
                 <div className={styles.linkWrap}>
                   <Typography>
-                    <Link to={EPath.SignUp}>
-                      {/* password再発行画面を作成する */}
+                    <Link to={EPath.PasswordReset}>
                       <I18nText i18nObj={Page.SignInPage.forgetPasswordLink} />
                     </Link>
                   </Typography>

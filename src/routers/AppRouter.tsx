@@ -10,10 +10,12 @@ import SamplePageTemplate from '../components/templates/SamplePageTemplate/Sampl
 import TechnologyPage from '../containers/pages/TechnologyPage';
 import ForbiddenPage from '../containers/pages/ForbiddenPage';
 import NotFoundPage from '../containers/pages/NotFoundPage';
+import PasswordResetPage from '../containers/pages/PasswordResetPage';
 
 const AppRouter: React.FC<{}> = () => {
   return (
     <Switch>
+      <Route exact={true} path={EPath.PasswordReset} component={PasswordResetPage} />
       <Route exact={true} path={EPath.Forbidden} component={ForbiddenPage} />
       <Route exact={true} path={EPath.NotFound} component={NotFoundPage} />
       <Route exact={true} path={EPath.SignIn} component={SignInPage} />

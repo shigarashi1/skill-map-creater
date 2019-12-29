@@ -6,20 +6,18 @@ import { voidFunction } from '../../helpers';
 
 const PersistenceType = config.isDev ? Persistence.SESSION : Persistence.NONE;
 
-const signIn = async (email: string, password: string) => {
-  return await auth
+const signIn = async (email: string, password: string) =>
+  auth
     .setPersistence(PersistenceType)
     .then(() => auth.signInWithEmailAndPassword(email, password).catch((err) => new ApiError(err)))
     .catch((err) => new ApiError(err));
-};
 
-const signUp = async (email: string, password: string) => {
-  return await auth.createUserWithEmailAndPassword(email, password).catch((err) => new ApiError(err));
-};
+const signUp = async (email: string, password: string) =>
+  auth.createUserWithEmailAndPassword(email, password).catch((err) => new ApiError(err));
 
-const signOut = async () => {
-  return await auth.signOut().catch((err) => new ApiError(err));
-};
+const signOut = async () => auth.signOut().catch((err) => new ApiError(err));
+
+const resetPassword = async (email: string) => auth.sendPasswordResetEmail(email).catch((err) => new ApiError(err));
 
 const onAuthStateChanged = (
   next: (user: Nullable<TFirebaseUser>) => void,
@@ -46,6 +44,7 @@ export const AuthenticationService = {
   signIn,
   signUp,
   signOut,
+  resetPassword,
   onAuthStateChanged,
   getAuthState,
 };

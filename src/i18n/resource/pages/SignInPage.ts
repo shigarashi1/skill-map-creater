@@ -24,7 +24,7 @@ export const SignInPage = {
     en: 'Create Account',
   },
   forgetPasswordLink: {
-    jp: 'パスワードを忘れた？',
+    jp: 'パスワード再発行',
     en: 'Forget Password',
   },
 };

@@ -4,7 +4,7 @@ export enum EPath {
   /** ログイン画面 */
   SignIn = '/login',
   /** 登録画面 */
-  SignUp = '/sign-up',
+  SignUp = '/sign_up',
   /** ホーム画面 */
   Home = '/home',
 
@@ -22,9 +22,9 @@ export enum EPath {
   SettingAuth = '/setting/authorization',
 
   /** スキル入力画面 */
-  SkillInput = '/skill-input',
+  SkillInput = '/skill_input',
   /** スキルマップ表示画面 */
-  SkillMap = '/skill-map',
+  SkillMap = '/skill_map',
 
   /** サンプル画面 */
   Sample = '/sample',
@@ -39,5 +39,7 @@ export enum EPath {
   /** 403画面 */
   Forbidden = '/forbidden',
   /** 404画面 */
-  NotFound = '/not-found',
+  NotFound = '/not_found',
+  /** passwordリセット画面 */
+  PasswordReset = 'password_reset',
 }
