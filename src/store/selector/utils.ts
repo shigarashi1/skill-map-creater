@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 import { AppState } from '..';
 import { utilsReducers } from '../utils';
+import { TLangCode } from '../../types';
 
 const featureSelector = (state: AppState): ReturnType<typeof utilsReducers> => state.utils;
 
@@ -18,6 +19,6 @@ export const UtilsSelector = {
     hasOpened: createSelector(featureSelector, (state) => state.sidebar),
   },
   language: {
-    langCode: createSelector(featureSelector, (state) => state.language.langCode),
+    langCode: createSelector(featureSelector, (state) => state.language.langCode as TLangCode),
   },
 };

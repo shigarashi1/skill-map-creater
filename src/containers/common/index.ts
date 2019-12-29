@@ -14,6 +14,7 @@ export function mapDispatchToCommonProps(dispatch: Dispatch) {
   const okCancelDialog = bindActionCreators(CommonPageActions.okCancelDialog, dispatch);
   const yesNoDialog = bindActionCreators(CommonPageActions.yesNoDialog, dispatch);
   const router = bindActionCreators(CommonPageActions.router, dispatch);
+  const language = bindActionCreators(CommonPageActions.language, dispatch);
   return {
     auth,
     sidebar,
@@ -21,5 +22,6 @@ export function mapDispatchToCommonProps(dispatch: Dispatch) {
     okCancelDialog,
     yesNoDialog,
     router,
+    language,
   };
 }

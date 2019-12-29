@@ -13,6 +13,7 @@ import styles from './Header.module.scss';
 import { Nullable, EPath } from '../../../types';
 import { Logger } from '../../../models';
 import { THeaderProps } from '../../../containers/components/Header';
+import LanguageSelect from '../../../containers/components/LanguageSelect';
 
 type TProps = THeaderProps & {
   isStatic?: boolean;
@@ -65,6 +66,7 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
           </Typography>
         </Toolbar>
         <Toolbar className={styles.right}>
+          <LanguageSelect />
           <Button onClick={onOpenMenu} color="inherit">
             {username ? (
               <Typography className={styles.username} variant="subtitle2" color="inherit">

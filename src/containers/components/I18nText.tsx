@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { AppState } from '../../store';
 
 import I18nText from '../../components/atoms/I18nText/I18nText';
-import { ELangCode } from '../../types';
+import { UtilsSelector } from '../../store/selector';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    langCode: ELangCode.jp,
+    langCode: UtilsSelector.language.langCode(state),
   };
 };
 
