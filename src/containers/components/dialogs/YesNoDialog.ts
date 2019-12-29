@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { AppState } from '../../../store';
-import { YesNoDialog } from '../../../components/organisms';
+import YesNoDialog from '../../../components/organisms/dialogs/YesNoDialog/YesNoDialog';
 import { UtilsSelector } from '../../../store/selector';
 import { mapDispatchToCommonProps } from '../../common';
 

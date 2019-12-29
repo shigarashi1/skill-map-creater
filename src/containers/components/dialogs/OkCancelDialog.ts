@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { AppState } from '../../../store';
-import { OkCancelDialog } from '../../../components/organisms';
+import OkCancelDialog from '../../../components/organisms/dialogs/OkCancelDialog/OkCancelDialog';
 import { UtilsSelector } from '../../../store/selector';
 import { mapDispatchToCommonProps } from '../../common';
 

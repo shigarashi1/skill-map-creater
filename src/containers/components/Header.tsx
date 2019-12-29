@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AppState } from '../../store';
 import { mapDispatchToCommonProps } from '../common';
-import { Header } from '../../components/molecules';
+import Header from '../../components/organisms/Header/Header';
 
 const mapStateToProps = (state: AppState) => {
   return {

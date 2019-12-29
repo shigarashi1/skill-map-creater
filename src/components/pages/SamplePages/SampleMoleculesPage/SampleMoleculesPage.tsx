@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 import styles from './SampleMoleculesPage.module.scss';
 
-import { SampleCard } from '../../../molecules';
+import SampleCard from '../../../molecules/SampleCard/SampleCard';
 import { SAMPLE_PAGE_BREAK_POINT } from '../../../../lookups';
 import { TSampleMoleculesPageProps } from '../../../../containers/pages';
 

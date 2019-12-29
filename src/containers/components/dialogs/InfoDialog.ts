@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { AppState } from '../../../store';
-import { InfoDialog } from '../../../components/organisms';
+import InfoDialog from '../../../components/organisms/dialogs/InfoDialog/InfoDialog';
 import { UtilsSelector } from '../../../store/selector';
 import { mapDispatchToCommonProps } from '../../common';
 
