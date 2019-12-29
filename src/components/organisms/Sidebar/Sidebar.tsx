@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,9 +19,9 @@ import { EPath, TSidebarListItem } from '../../../types';
 import { SIDEBAR_LIST } from '../../../lookups';
 import { TSidebarProps } from '../../../containers/components/Sidebar';
 
-type TProps = TSidebarProps;
+type TProps = TSidebarProps & RouteComponentProps;
 
-const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, router, currentPath }) => {
+const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history }) => {
   const [openedPath, setOpenedPath] = useState<EPath[]>([]);
 
   const onClose = () => {
@@ -34,7 +35,7 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, router, currentPath }) 
 
   const onClickMenu = (path: EPath) => (event: React.MouseEvent<HTMLDivElement>): void => {
     if (currentPath !== path) {
-      router.push(path);
+      history.push(path);
     }
   };
 
@@ -112,4 +113,4 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, router, currentPath }) 
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
