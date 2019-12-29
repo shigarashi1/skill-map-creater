@@ -6,7 +6,7 @@ import styles from './SampleMoleculesPage.module.scss';
 
 import SampleCard from '../../../molecules/SampleCard/SampleCard';
 import { SAMPLE_PAGE_BREAK_POINT } from '../../../../lookups';
-import { TSampleMoleculesPageProps } from '../../../../containers/pages';
+import { TSampleMoleculesPageProps } from '../../../../containers/pages/samples/SampleMoleculesPage';
 
 type TProps = TSampleMoleculesPageProps;
 

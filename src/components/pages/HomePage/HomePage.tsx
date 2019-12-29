@@ -1,16 +1,11 @@
 import React from 'react';
 
 import styles from './HomePage.module.scss';
-import PageTitle from '../../../containers/components/PageTitle';
 
 type TProps = {};
 
 const HomePage: React.FC<TProps> = () => {
-  return (
-    <div className={styles.root}>
-      <PageTitle />
-    </div>
-  );
+  return <div className={styles.root}>HomePage</div>;
 };
 
 export default HomePage;

@@ -41,5 +41,5 @@ export enum EPath {
   /** 404画面 */
   NotFound = '/not_found',
   /** passwordリセット画面 */
-  PasswordReset = 'password_reset',
+  PasswordReset = '/password_reset',
 }

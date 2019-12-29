@@ -2,7 +2,9 @@ import React from 'react';
 import { Route, Redirect } from 'react-router';
 
 import { EPath } from '../../types';
-import { SampleAtomsPage, SampleMoleculesPage, SampleOrganismsPage } from '../../containers';
+import SampleAtomsPage from '../../containers/pages/samples/SampleAtomsPage';
+import SampleMoleculesPage from '../../containers/pages/samples/SampleMoleculesPage';
+import SampleOrganismsPage from '../../containers/pages/samples/SampleOrganismsPage';
 
 const SamplePageRouter: React.FC<{}> = () => {
   return (

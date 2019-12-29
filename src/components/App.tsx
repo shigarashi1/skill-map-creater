@@ -5,10 +5,13 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from '../helpers/history';
 import { configureStore } from '../store';
 import { ErrorBoundary } from './others';
-import { LoadingSpiner, InfoDialog, OkCancelDialog, YesNoDialog } from '../containers';
 
 import BrowserTab from '../backgrounds/BrowserTab';
 import MainTemplate from './templates/MainTemplate/MainTemplate';
+import LoadingSpiner from '../containers/components/LoadingSpiner';
+import InfoDialog from '../containers/components/dialogs/InfoDialog';
+import OkCancelDialog from '../containers/components/dialogs/OkCancelDialog';
+import YesNoDialog from '../containers/components/dialogs/YesNoDialog';
 
 const store = configureStore({});
 

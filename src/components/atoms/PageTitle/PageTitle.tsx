@@ -11,11 +11,12 @@ type TProps = {
 };
 
 const PageTitle: React.FC<TProps> = ({ currentPath }) => {
-  return (
+  const i18nObj = getPageTitleObject(currentPath);
+  return !i18nObj ? null : (
     <React.Fragment>
       <div className={styles.root}>
         <Typography variant="h4" color="inherit">
-          <I18nText i18nObj={getPageTitleObject(currentPath)} />
+          <I18nText i18nObj={i18nObj} />
         </Typography>
       </div>
     </React.Fragment>

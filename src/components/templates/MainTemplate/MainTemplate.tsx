@@ -7,6 +7,7 @@ import { ErrorBoundary } from '../../others';
 import AppRouter from '../../../routers/AppRouter';
 import Header from '../../../containers/components/Header';
 import Sidebar from '../../../containers/components/Sidebar';
+import PageTitle from '../../../containers/components/PageTitle';
 
 const MainTemplate: React.FC<{}> = () => {
   return (
@@ -16,6 +17,7 @@ const MainTemplate: React.FC<{}> = () => {
       </ErrorBoundary>
       <div className={styles.container}>
         <ErrorBoundary>
+          <PageTitle />
           <AppRouter />
         </ErrorBoundary>
       </div>

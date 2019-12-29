@@ -1,0 +1,11 @@
+// @types
+@import '../../../styles/_variables';
+
+$padding-top: $height-header + 5px;
+
+#root {
+  background-color: $bg-color;
+  .container {
+    padding: $padding-top 5px 5px;
+  }
+}

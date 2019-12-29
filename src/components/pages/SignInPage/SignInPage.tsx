@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 
 import styles from './SignInPage.module.scss';
 import I18nText from '../../../containers/components/I18nText';
-import PageTitle from '../../../containers/components/PageTitle';
 import WithLabel from '../../molecules/WithLabel/WithLabel';
 
 import { Page } from '../../../i18n/resource';
@@ -36,7 +35,6 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
 
   return (
     <div id={styles.root}>
-      <PageTitle />
       <Grid className={styles.grid} container={true} spacing={2} alignContent="center" justify="center">
         <Grid item={true}>
           <Card className={styles.card}>
