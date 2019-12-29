@@ -41,9 +41,6 @@ const SamplePageTemplate: React.FC<TProps> = ({ history }) => {
 
   return (
     <div id={styles.root}>
-      <div className={styles.title}>
-        <PageTitle />
-      </div>
       <div className={styles.tab}>
         <AppBar position="static">
           <Tabs value={tabIndex} onChange={onChange}>
