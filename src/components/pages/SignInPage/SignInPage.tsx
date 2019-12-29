@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import styles from './SignInPage.module.scss';
 import I18nText from '../../../containers/components/I18nText';
 import WithLabel from '../../molecules/WithLabel/WithLabel';
+import SignPageTemplate from '../../templates/SignPageTemplate/SignPageTemplate';
 
 import { Page } from '../../../i18n/resource';
 import { TPageProps } from '../../../containers/pages/SignInPage';
@@ -35,58 +31,55 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
 
   return (
     <div id={styles.root}>
-      <Grid className={styles.grid} container={true} spacing={2} alignContent="center" justify="center">
-        <Grid item={true}>
-          <Card className={styles.card}>
-            <CardHeader className={styles.header} title={<I18nText i18nObj={Page.SignInPage.formTitle} />} />
-            <CardContent className={styles.card}>
-              <div className={styles.form}>
-                <WithLabel label={Page.SignInPage.email}>
-                  <TextField
-                    className={styles.text}
-                    value={formState.email}
-                    onChange={onChange('email')}
-                    variant="outlined"
-                    fullWidth={true}
-                  />
-                </WithLabel>
-                <WithLabel label={Page.SignInPage.password}>
-                  <TextField
-                    className={styles.text}
-                    value={formState.password}
-                    onChange={onChange('password')}
-                    variant="outlined"
-                    fullWidth={true}
-                    type="password"
-                  />
-                </WithLabel>
-                <div className={styles.linkWrap}>
-                  <Typography>
-                    <Link to={EPath.PasswordReset}>
-                      <I18nText i18nObj={Page.SignInPage.forgetPasswordLink} />
-                    </Link>
-                  </Typography>
-                </div>
-              </div>
-            </CardContent>
-            <CardActions className={styles.action}>
-              <Button onClick={onClear} variant="contained">
-                <I18nText i18nObj={Page.SignInPage.clearBtn} />
-              </Button>
-              <Button onClick={onSignIn} variant="contained" color="primary">
-                <I18nText i18nObj={Page.SignInPage.loginBtn} />
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-      </Grid>
-      <div className={styles.linkWrapCreate}>
-        <Typography>
-          <Link to={EPath.SignUp}>
-            <I18nText i18nObj={Page.SignInPage.createAccountLink} />
-          </Link>
-        </Typography>
-      </div>
+      <SignPageTemplate
+        title={<I18nText i18nObj={Page.SignInPage.formTitle} />}
+        actions={
+          <React.Fragment>
+            <Button onClick={onClear} variant="contained">
+              <I18nText i18nObj={Page.SignInPage.clearBtn} />
+            </Button>
+            <Button onClick={onSignIn} variant="contained" color="primary">
+              <I18nText i18nObj={Page.SignInPage.loginBtn} />
+            </Button>
+          </React.Fragment>
+        }
+        extra={
+          <Typography>
+            <Link to={EPath.SignUp}>
+              <I18nText i18nObj={Page.SignInPage.createAccountLink} />
+            </Link>
+          </Typography>
+        }
+      >
+        <div className={styles.form}>
+          <WithLabel label={Page.SignInPage.email}>
+            <TextField
+              className={styles.text}
+              value={formState.email}
+              onChange={onChange('email')}
+              variant="outlined"
+              fullWidth={true}
+            />
+          </WithLabel>
+          <WithLabel label={Page.SignInPage.password}>
+            <TextField
+              className={styles.text}
+              value={formState.password}
+              onChange={onChange('password')}
+              variant="outlined"
+              fullWidth={true}
+              type="password"
+            />
+          </WithLabel>
+          <div className={styles.linkWrap}>
+            <Typography>
+              <Link to={EPath.PasswordReset}>
+                <I18nText i18nObj={Page.SignInPage.forgetPasswordLink} />
+              </Link>
+            </Typography>
+          </div>
+        </div>
+      </SignPageTemplate>
     </div>
   );
 };

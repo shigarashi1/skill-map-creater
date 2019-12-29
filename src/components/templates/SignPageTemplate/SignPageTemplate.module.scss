@@ -1,11 +1,27 @@
 // @types
 @import '../../../styles/_variables';
 
-$padding-top: $height-header + 5px;
-
+// @types
 #root {
-  background-color: $bg-color;
-  .container {
-    padding: $padding-top 5px 5px;
+  min-height: 100vh;
+  .grid {
+    min-height: 50vh;
+    padding: 10px;
+  }
+  .card {
+    padding-top: 0;
+    width: 350px;
+  }
+  .action {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    > button {
+      margin: 0 20px;
+    }
+  }
+  .extra {
+    display: flex;
+    justify-content: center;
   }
 }

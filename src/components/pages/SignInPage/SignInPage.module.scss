@@ -1,30 +1,10 @@
 // @types
 #root {
-  min-height: 100vh;
-  .grid {
-    min-height: 50vh;
-    padding: 10px;
-  }
-  .card {
-    padding-top: 0;
-    width: 350px;
-  }
-  .linkWrap {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .linkWrapCreate {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .action {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    > button {
-      margin: 0 20px;
+  .form {
+    .linkWrap {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
