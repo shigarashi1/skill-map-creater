@@ -1,12 +1,12 @@
 import { combineEpics } from 'redux-observable';
 // listeners
-import { LoginPageListener } from './LoginPage';
 import { CommonPageListener } from './CommonPage';
 import { SignInPageListener } from './SignInPage';
+import { PasswordResetPageListener } from './PasswordResetPage';
 
 // actions
-export { LoginPageActions } from './LoginPage';
 export { CommonPageActions } from './CommonPage';
 export { SignInPageActions } from './SignInPage';
+export { PasswordResetPageActions } from './PasswordResetPage';
 
-export const eventListenerEpics = combineEpics(LoginPageListener, CommonPageListener, SignInPageListener);
+export const eventListenerEpics = combineEpics(CommonPageListener, SignInPageListener, PasswordResetPageListener);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
@@ -17,12 +17,14 @@ import { EPath } from '../../../types';
 type TProps = TPageProps;
 
 const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init }) => {
+  useEffect(() => {
+    return () => {
+      init();
+    };
+  }, [init]);
+
   const onChange = (key: keyof typeof formState) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({ key, value: e.target.value });
-  };
-
-  const onClear = () => {
-    init();
   };
 
   const onSignIn = () => {
@@ -35,10 +37,7 @@ const SignInPage: React.FC<TProps> = ({ formState, setFormState, signIn, init })
         title={<I18nText i18nObj={Page.SignInPage.formTitle} />}
         actions={
           <React.Fragment>
-            <Button onClick={onClear} variant="contained">
-              <I18nText i18nObj={Page.SignInPage.clearBtn} />
-            </Button>
-            <Button onClick={onSignIn} variant="contained" color="primary">
+            <Button onClick={onSignIn} variant="contained" color="primary" fullWidth={true}>
               <I18nText i18nObj={Page.SignInPage.loginBtn} />
             </Button>
           </React.Fragment>
