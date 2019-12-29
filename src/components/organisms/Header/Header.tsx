@@ -16,6 +16,8 @@ import { Nullable, EPath } from '../../../types';
 import { Logger } from '../../../models';
 import { THeaderProps } from '../../../containers/components/Header';
 import LanguageSelect from '../../../containers/components/LanguageSelect';
+import I18nText from '../../../containers/components/I18nText';
+import { Component } from '../../../i18n/resource';
 
 type TProps = THeaderProps & {
   isStatic?: boolean;
@@ -64,7 +66,12 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
             <Icon>menu_icon</Icon>
           </IconButton>
           <Typography variant="h6" color="inherit">
-            Skill Map Creater
+            <Hidden xsDown={true}>
+              <I18nText i18nObj={Component.header.title} />
+            </Hidden>
+            <Hidden smUp={true}>
+              <I18nText i18nObj={Component.header.shortTitle} />
+            </Hidden>
           </Typography>
         </Toolbar>
         <Toolbar className={styles.right}>
@@ -89,12 +96,18 @@ const Header: React.FC<TProps> = ({ hasSignedIn, username, sidebar, auth, router
           open={Boolean(anchorEl)}
           onClose={onCloseMenu}
         >
-          <MenuItem onClick={onClickUserSetting}>User Setting</MenuItem>
-          <MenuItem onClick={onSignOut}>Sign Out</MenuItem>
+          <MenuItem onClick={onClickUserSetting}>
+            <I18nText i18nObj={Component.header.userSettingBtn} />
+          </MenuItem>
+          <MenuItem onClick={onSignOut}>
+            <I18nText i18nObj={Component.header.signOutBtn} />
+          </MenuItem>
         </Menu>
       ) : (
         <Menu id="icon-menu" anchorEl={anchorEl} keepMounted={true} open={Boolean(anchorEl)} onClose={onCloseMenu}>
-          <MenuItem onClick={onToLoginPage}>Sign In / Up</MenuItem>
+          <MenuItem onClick={onToLoginPage}>
+            <I18nText i18nObj={Component.header.signInBtn} />
+          </MenuItem>
         </Menu>
       )}
     </React.Fragment>
