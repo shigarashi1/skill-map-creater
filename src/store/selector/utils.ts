@@ -17,4 +17,7 @@ export const UtilsSelector = {
   sidebar: {
     hasOpened: createSelector(featureSelector, (state) => state.sidebar),
   },
+  language: {
+    langCode: createSelector(featureSelector, (state) => state.language.langCode),
+  },
 };

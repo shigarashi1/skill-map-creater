@@ -5,7 +5,13 @@ import { mergeMap, map } from 'rxjs/operators';
 
 import { AppState } from '../../store';
 import { CommonPageActions } from '.';
-import { infoDialogActions, yesNoDialogActions, okCancelDialogActions, sidebarActions } from '../../store/utils';
+import {
+  infoDialogActions,
+  yesNoDialogActions,
+  okCancelDialogActions,
+  sidebarActions,
+  languageActions,
+} from '../../store/utils';
 import { EPath, WrapAction } from '../../types';
 import { routerActions } from '../../store/router';
 
@@ -76,6 +82,12 @@ const routerReplace: Epic<AnyAction, Action<EPath>, AppState> = (action$, store)
     map(({ payload }) => routerActions.replace(payload)),
   );
 
+const changeLanguage: Epic<AnyAction, WrapAction<typeof languageActions.change>, AppState> = (action$, store) =>
+  action$.pipe(
+    ofAction(CommonPageActions.language.change),
+    map(({ payload }) => languageActions.change(payload)),
+  );
+
 export const CommonPageListener = combineEpics(
   signOut,
   showSidebar,
@@ -88,4 +100,5 @@ export const CommonPageListener = combineEpics(
   closeOkCancelDialog,
   routerPush,
   routerReplace,
+  changeLanguage,
 );

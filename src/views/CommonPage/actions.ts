@@ -1,6 +1,6 @@
 import { actionCreatorFactory } from 'typescript-fsa';
 import { EPath, ActionParameters } from '../../types';
-import { infoDialogActions, yesNoDialogActions, okCancelDialogActions } from '../../store/utils';
+import { infoDialogActions, yesNoDialogActions, okCancelDialogActions, languageActions } from '../../store/utils';
 
 // actions
 const ac = actionCreatorFactory('[views/CommonPage]');
@@ -30,6 +30,10 @@ export const CommonPageActions = {
   okCancelDialog: {
     show: ac<ActionParameters<typeof okCancelDialogActions.show>>('showOkCancelDialog'),
     close: ac<void>('closeOkCancelDialog'),
+  },
+  // language
+  language: {
+    change: ac<ActionParameters<typeof languageActions.change>>('changeLanguage'),
   },
   // snackbar
 
