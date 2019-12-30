@@ -1,7 +1,7 @@
 - [x] PageTitleの修正
 - [x] 言語選択のコンポーネントの作成
 - [x] PasswordResetPageの作成
-- [] SignUpPageの作成
+- [x] SignUpPageの作成
 - [] NotFoundPageの作成
 - [] 言語選択はlocalStorageに記憶させておく
 - [] notiSnackbarの仕組み作成

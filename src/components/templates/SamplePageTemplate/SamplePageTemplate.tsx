@@ -7,9 +7,9 @@ import Tab from '@material-ui/core/Tab';
 import styles from './SamplePageTemplate.module.scss';
 
 import SamplePageRouter from '../../../routers/sub/SampleRouter';
+
 import { EPath } from '../../../types';
 import { matchCondition } from '../../../helpers';
-import PageTitle from '../../../containers/components/PageTitle';
 
 const LABELS = ['Atoms', 'Molecules', 'Organisms'];
 
