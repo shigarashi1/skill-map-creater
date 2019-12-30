@@ -1,11 +1,11 @@
 export const SignUpPage = {
   formTitle: {
-    jp: 'Skill Map Creater',
+    jp: 'アカウント作成',
     en: 'Sign up to Skill Map Creater',
   },
   username: {
     jp: '名前',
-    en: 'Username',
+    en: 'User Name',
   },
   email: {
     jp: 'メールアドレス',
