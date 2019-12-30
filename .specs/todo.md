@@ -5,5 +5,5 @@
 - [x] NotFoundPageの作成
   - [] 権限があるとき、homePageへ
   - [] 権限がないとき、topPageへ
-- [] 言語選択はlocalStorageに記憶させておく
+- [x] 言語選択はlocalStorageに記憶させておく
 - [] notiSnackbarの仕組み作成
