@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import styles from './PageTitle.module.scss';
 
 import I18nText from '../../../containers/components/I18nText';
-import { getPageTitleObject } from '../../../helpers/view/page-title';
+import { getPageTitleObject } from '../../../helpers/view/pageTitle';
 
 type TProps = {
   currentPath: string;

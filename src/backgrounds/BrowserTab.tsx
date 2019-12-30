@@ -2,11 +2,13 @@ import { AppState } from '../store';
 import { Dispatch } from 'redux';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { MAIN_TITLE } from '../lookups';
+import { RouterSelector, UtilsSelector } from '../store/selector';
+import { getBrowserTabString } from '../helpers/view/browserTab';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    title: '',
+    currentPath: RouterSelector.currentPath(state),
+    currentLangCode: UtilsSelector.language.langCode(state),
   };
 };
 
@@ -16,10 +18,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 type TProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
-const BrowserTab: React.FC<TProps> = ({ title }) => {
+const BrowserTab: React.FC<TProps> = ({ currentPath, currentLangCode }) => {
   useEffect(() => {
-    window.document.title = title || MAIN_TITLE;
-  }, [title]);
+    window.document.title = getBrowserTabString(currentPath, currentLangCode);
+  }, [currentPath, currentLangCode]);
 
   return null;
 };
