@@ -7,7 +7,7 @@ import { languageReducers } from './language';
 export { infoDialogActions, okCancelDialogActions, yesNoDialogActions, clearDialogEpics } from './dialogs';
 export { loadingActions } from './loading';
 export { sidebarActions } from './sidebar';
-export { languageActions } from './language';
+export { languageActions, languageEpics } from './language';
 
 export const utilsReducers = combineReducers({
   dialog: dialogReducers,

@@ -20,7 +20,7 @@ import { sampleReducers, sampleEpics } from './__sample';
 import { rootActions } from './actions';
 
 // reducers
-import { utilsReducers, clearDialogEpics } from './utils';
+import { utilsReducers, clearDialogEpics, languageEpics } from './utils';
 import { pageReducers } from './pages';
 
 // epics
@@ -52,7 +52,14 @@ const rootReducer = (state: any, action: any) => {
 };
 
 // epic
-const rootEpic = combineEpics(sampleEpics, eventListenerEpics, middlewareEpics, clearDialogEpics, routerEpics);
+const rootEpic = combineEpics(
+  sampleEpics,
+  eventListenerEpics,
+  middlewareEpics,
+  clearDialogEpics,
+  routerEpics,
+  languageEpics,
+);
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>();
 const crashSentryReporter = (api: MiddlewareAPI) => (next: Dispatch<AnyAction>) => (action: any) => {
   try {
