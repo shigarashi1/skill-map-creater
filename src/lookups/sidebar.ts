@@ -1,5 +1,6 @@
 import { EPath, TSidebarListItem } from '../types';
 
+// FIXME: ページを表示するかしないかはEPathで決まるべきなので、設定ファイルをわけるべき
 export const SIDEBAR_LIST: TSidebarListItem[][] = [
   [
     {

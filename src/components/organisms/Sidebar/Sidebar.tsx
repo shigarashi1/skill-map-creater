@@ -54,8 +54,8 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history, i
       }
     };
 
-    const canShowEnv = !!canShowDevelopOnly !== config.isDev;
-    if (!canShowEnv || !canShowAuthorization(userAuthorization, authorization)) {
+    const canShowEnv = !!canShowDevelopOnly === config.isDev;
+    if (!canShowAuthorization(userAuthorization, authorization) && !canShowEnv) {
       return null;
     }
     return children ? (
