@@ -6,10 +6,9 @@ import 'react-app-polyfill/ie11';
 
 import './styles/main.scss';
 import App from './components/App';
+import ErrorBoundary from './components/others/ErrorBoundary/ErrorBoundary';
 
 import config from './configuration/config';
-
-import { ErrorBoundary } from './components/others';
 
 Sentry.init(config.sentry);
 

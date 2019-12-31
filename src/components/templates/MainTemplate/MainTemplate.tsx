@@ -2,8 +2,7 @@ import React from 'react';
 
 import styles from './MainTemplate.module.scss';
 
-import { ErrorBoundary } from '../../others';
-
+import ErrorBoundary from '../../others/ErrorBoundary/ErrorBoundary';
 import AppRouter from '../../../routers/AppRouter';
 import Header from '../../../containers/components/Header';
 import Sidebar from '../../../containers/components/Sidebar';
