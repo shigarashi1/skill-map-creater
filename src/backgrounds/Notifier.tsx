@@ -1,11 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withSnackbar, WithSnackbarProps } from 'notistack';
 import Button from '@material-ui/core/Button';
 
 import { AppState } from '../store';
 import { Dispatch } from 'redux';
 import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { withSnackbar, WithSnackbarProps } from 'notistack';
 
 import { UtilsSelector } from '../store/selector';
 import { mapDispatchToCommonProps } from '../containers/common';
