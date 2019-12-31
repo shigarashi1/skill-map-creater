@@ -1,6 +1,7 @@
 import { Dispatch, bindActionCreators } from 'redux';
 import { AppState } from '../../store';
 import { CommonPageActions } from '../../views';
+import { VariantType } from 'notistack';
 
 export function mapStateToCommonProps(state: AppState) {
   return {};
@@ -15,6 +16,10 @@ export function mapDispatchToCommonProps(dispatch: Dispatch) {
   const yesNoDialog = bindActionCreators(CommonPageActions.yesNoDialog, dispatch);
   const router = bindActionCreators(CommonPageActions.router, dispatch);
   const language = bindActionCreators(CommonPageActions.language, dispatch);
+  const notification = bindActionCreators(CommonPageActions.notification, dispatch);
+  const enqueueNotification = (variant: VariantType, message: string) =>
+    notification.enqueueNotification({ message, options: { variant } });
+
   return {
     auth,
     sidebar,
@@ -23,5 +28,6 @@ export function mapDispatchToCommonProps(dispatch: Dispatch) {
     yesNoDialog,
     router,
     language,
+    notification: { ...notification, enqueueNotification },
   };
 }

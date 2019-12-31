@@ -1,6 +1,12 @@
 import { actionCreatorFactory } from 'typescript-fsa';
-import { EPath, ActionParameters } from '../../types';
-import { infoDialogActions, yesNoDialogActions, okCancelDialogActions, languageActions } from '../../store/utils';
+import { EPath, ActionParameters, TNotification } from '../../types';
+import {
+  infoDialogActions,
+  yesNoDialogActions,
+  okCancelDialogActions,
+  languageActions,
+  notificationActions,
+} from '../../store/utils';
 
 // actions
 const ac = actionCreatorFactory('[views/CommonPage]');
@@ -36,7 +42,12 @@ export const CommonPageActions = {
     change: ac<ActionParameters<typeof languageActions.change>>('changeLanguage'),
   },
   // snackbar
-
+  notification: {
+    enqueueNotification: ac<TNotification>('enqueueNotification'),
+    dismissNotification: ac<ActionParameters<typeof notificationActions.dismiss>>('dismissNotification'),
+    dismissAllNotification: ac<ActionParameters<typeof notificationActions.dismissAll>>('dismissAllNotification'),
+    removeNotification: ac<ActionParameters<typeof notificationActions.remove>>('removeNotification'),
+  },
   // error
 
   // router

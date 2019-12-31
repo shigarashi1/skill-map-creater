@@ -11,6 +11,7 @@ import {
   okCancelDialogActions,
   sidebarActions,
   languageActions,
+  notificationActions,
 } from '../../store/utils';
 import { EPath, WrapAction } from '../../types';
 import { routerActions } from '../../store/router';
@@ -88,6 +89,39 @@ const changeLanguage: Epic<AnyAction, WrapAction<typeof languageActions.change>,
     map(({ payload }) => languageActions.change(payload)),
   );
 
+const enqueueNotification: Epic<AnyAction, WrapAction<typeof notificationActions.enqueue>, AppState> = (
+  action$,
+  store,
+) =>
+  action$.pipe(
+    ofAction(CommonPageActions.notification.enqueueNotification),
+    map(({ payload }) => payload),
+    map(({ message, options }) =>
+      notificationActions.enqueue({
+        message,
+        options: {
+          ...options,
+          key: options.key ? options.key : String(new Date().getTime() + Math.random()),
+        },
+      }),
+    ),
+  );
+
+const dismissNotification: Epic<AnyAction, WrapAction<typeof notificationActions.dismiss>, AppState> = (
+  action$,
+  store,
+) =>
+  action$.pipe(
+    ofAction(CommonPageActions.notification.dismissNotification),
+    map(({ payload }) => notificationActions.dismiss(payload)),
+  );
+
+const removeNotification: Epic<AnyAction, WrapAction<typeof notificationActions.remove>, AppState> = (action$, store) =>
+  action$.pipe(
+    ofAction(CommonPageActions.notification.removeNotification),
+    map(({ payload }) => notificationActions.remove(payload)),
+  );
+
 export const CommonPageListener = combineEpics(
   signOut,
   showSidebar,
@@ -101,4 +135,7 @@ export const CommonPageListener = combineEpics(
   routerPush,
   routerReplace,
   changeLanguage,
+  enqueueNotification,
+  removeNotification,
+  dismissNotification,
 );

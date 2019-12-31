@@ -21,4 +21,7 @@ export const UtilsSelector = {
   language: {
     langCode: createSelector(featureSelector, (state) => state.language.langCode as TLangCode),
   },
+  notification: {
+    notifications: createSelector(featureSelector, (state) => state.notification.notifications),
+  },
 };

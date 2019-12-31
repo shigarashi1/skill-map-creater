@@ -10,14 +10,41 @@ import { TSampleAtomsPageProps } from '../../../../containers/pages/samples/Samp
 
 type TProps = TSampleAtomsPageProps;
 
-const SampleAtomsPage: React.FC<TProps> = () => {
+const SampleAtomsPage: React.FC<TProps> = ({ notification }) => {
   const Samples = [
     {
-      title: 'test',
-      contexts: 'test',
-      node: <p>console log</p>,
+      title: 'notification(default)',
+      contexts: 'notification',
       action: () => {
-        console.log('test');
+        notification.enqueueNotification('default', new Date().toUTCString());
+      },
+    },
+    {
+      title: 'notification(error)',
+      contexts: 'notification',
+      action: () => {
+        notification.enqueueNotification('error', new Date().toUTCString());
+      },
+    },
+    {
+      title: 'notification(info)',
+      contexts: 'notification',
+      action: () => {
+        notification.enqueueNotification('info', new Date().toUTCString());
+      },
+    },
+    {
+      title: 'notification(success)',
+      contexts: 'notification',
+      action: () => {
+        notification.enqueueNotification('success', new Date().toUTCString());
+      },
+    },
+    {
+      title: 'notification(warning)',
+      contexts: 'notification',
+      action: () => {
+        notification.enqueueNotification('warning', new Date().toUTCString());
       },
     },
   ];

@@ -6,4 +6,4 @@
   - [] 権限があるとき、homePageへ
   - [] 権限がないとき、topPageへ
 - [x] 言語選択はlocalStorageに記憶させておく
-- [] notiSnackbarの仕組み作成
+- [x] notiSnackbarの仕組み作成
