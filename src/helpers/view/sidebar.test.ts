@@ -1,9 +1,9 @@
 import clone from 'ramda/es/clone';
 
-import { canShowSidebarItem } from './sidebar';
+import { canShowAuthorization } from './sidebar';
 import { TAuthorization, NestedPartial } from '../../types';
 
-describe('canShowSidebarItem', () => {
+describe('canShowAuthorization', () => {
   it('itemAuthorizationがundefinedの場合、true', () => {
     const userAuth: TAuthorization = {
       canSetting: false,
@@ -11,7 +11,7 @@ describe('canShowSidebarItem', () => {
       canShowSkill: false,
       canShowLogin: true,
     };
-    expect(canShowSidebarItem(userAuth, undefined)).toBeTruthy();
+    expect(canShowAuthorization(userAuth, undefined)).toBeTruthy();
   });
   it('itemAuthorizationのkeyがあり、値がuserAuthorizationと全て合致する場合、true', () => {
     const userAuth1: TAuthorization = {
@@ -23,7 +23,7 @@ describe('canShowSidebarItem', () => {
     const itemAuth1: NestedPartial<TAuthorization> = {
       canShowLogin: true,
     };
-    expect(canShowSidebarItem(userAuth1, itemAuth1)).toBeTruthy();
+    expect(canShowAuthorization(userAuth1, itemAuth1)).toBeTruthy();
 
     const userAuth2: TAuthorization = {
       canSetting: true,
@@ -35,7 +35,7 @@ describe('canShowSidebarItem', () => {
       canSetting: true,
       canEditSkill: true,
     };
-    expect(canShowSidebarItem(userAuth2, itemAuth2)).toBeTruthy();
+    expect(canShowAuthorization(userAuth2, itemAuth2)).toBeTruthy();
   });
   it('上記以外、false', () => {
     const userAuth1: TAuthorization = {
@@ -47,7 +47,7 @@ describe('canShowSidebarItem', () => {
     const itemAuth1: NestedPartial<TAuthorization> = {
       canShowLogin: true,
     };
-    const result1 = canShowSidebarItem(userAuth1, itemAuth1);
+    const result1 = canShowAuthorization(userAuth1, itemAuth1);
     console.log(result1);
     expect(result1).toBeFalsy();
 
@@ -61,7 +61,7 @@ describe('canShowSidebarItem', () => {
       canSetting: true,
       canEditSkill: true,
     };
-    const result2 = canShowSidebarItem(userAuth2, itemAuth2);
+    const result2 = canShowAuthorization(userAuth2, itemAuth2);
     expect(result2).toBeFalsy();
   });
 });

@@ -20,7 +20,7 @@ import { EPath, TSidebarListItem } from '../../../types';
 import { SIDEBAR_LIST } from '../../../lookups';
 import { TSidebarProps } from '../../../containers/components/Sidebar';
 import { getAuthorization } from '../../../helpers';
-import { canShowSidebarItem } from '../../../helpers/view/sidebar';
+import { canShowAuthorization } from '../../../helpers/view/sidebar';
 
 type TProps = TSidebarProps & RouteComponentProps;
 
@@ -54,8 +54,8 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history, i
       }
     };
 
-    const canShow = !!canShowDevelopOnly !== config.isDev && canShowSidebarItem(userAuthorization, authorization);
-    if (!canShow) {
+    const canShowEnv = !!canShowDevelopOnly !== config.isDev;
+    if (!canShowEnv || !canShowAuthorization(userAuthorization, authorization)) {
       return null;
     }
     return children ? (

@@ -1,6 +1,6 @@
 import { TAuthorization, NestedPartial } from '../../types';
 
-export const canShowSidebarItem = (
+export const canShowAuthorization = (
   userAuthorization: TAuthorization,
   itemAuthorization?: NestedPartial<TAuthorization>,
 ): boolean => {
