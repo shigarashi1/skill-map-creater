@@ -9,7 +9,7 @@ import { withSnackbar, WithSnackbarProps } from 'notistack';
 
 import { UtilsSelector } from '../store/selector';
 import { mapDispatchToCommonProps } from '../containers/common';
-import { getAutoHideDuration } from '../helpers/notification';
+import { getAutoHideDuration } from '../helpers/view/notification';
 
 const mapStateToProps = (state: AppState) => {
   return {
