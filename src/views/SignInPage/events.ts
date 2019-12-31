@@ -1,18 +1,22 @@
-import { Action, AnyAction } from 'typescript-fsa';
+import { AnyAction } from 'typescript-fsa';
 import { Epic, combineEpics } from 'redux-observable';
 import { ofAction } from 'typescript-fsa-redux-observable-of-action';
-import { mergeMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AppState } from '../../store';
 import { SignInPageActions } from './actions';
 import { WrapAction } from '../../types';
 import { signInPageActions } from '../../store/pages';
+import { authActions } from '../../store/auth';
 
 // epics
-const signIn: Epic<AnyAction, Action<void>, AppState> = (action$, store) =>
+const signIn: Epic<AnyAction, WrapAction<typeof authActions.signIn>, AppState> = (action$, store) =>
   action$.pipe(
     ofAction(SignInPageActions.signIn),
     map(({ payload }) => payload),
-    mergeMap((action) => []),
+    // TODO: 仮
+    map((payload) =>
+      authActions.signIn({ uid: '', emailVerified: false, email: '', isAnonymous: false, photoURL: null }),
+    ),
   );
 
 const setFormState: Epic<AnyAction, WrapAction<typeof signInPageActions.setFormState>, AppState> = (action$, store) =>

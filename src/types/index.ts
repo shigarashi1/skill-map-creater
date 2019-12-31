@@ -8,3 +8,4 @@ export * from './user';
 export * from './base';
 export * from './components';
 export * from './notification';
+export * from './authorization';

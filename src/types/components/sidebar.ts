@@ -1,13 +1,12 @@
 import { EPath } from '..';
+import { NestedPartial } from '../common';
+import { TAuthorization } from '../authorization';
 
 export type TSidebarListItem = {
   text: string;
-  icon?: string;
   path: EPath;
-  authorization: {
-    isOwner?: boolean;
-    isPrivate?: boolean;
-    isSignedIn?: boolean;
-  };
+  authorization?: NestedPartial<TAuthorization>;
+  canShowDevelopOnly?: boolean;
+  icon?: string;
   children?: TSidebarListItem[];
 };

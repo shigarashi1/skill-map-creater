@@ -22,6 +22,7 @@ import { rootActions } from './actions';
 // reducers
 import { utilsReducers, clearDialogEpics, languageEpics } from './utils';
 import { pageReducers } from './pages';
+import { authReducers } from './auth';
 
 // epics
 import { eventListenerEpics } from '../views';
@@ -32,7 +33,7 @@ import { routerEpics } from './router';
 export const reducers = combineReducers({
   router: connectRouter(history),
   utils: utilsReducers,
-  // auth: authReducers,
+  auth: authReducers,
   // user: userReducers,
   // category: categoryReducers,
   // target: targetReducers,

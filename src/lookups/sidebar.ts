@@ -7,9 +7,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       icon: 'input',
       path: EPath.SignIn,
       authorization: {
-        isOwner: false,
-        isPrivate: false,
-        isSignedIn: false,
+        canShowLogin: true,
       },
     },
     {
@@ -17,9 +15,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       icon: 'person_add',
       path: EPath.SignUp,
       authorization: {
-        isOwner: false,
-        isPrivate: false,
-        isSignedIn: false,
+        canShowLogin: true,
       },
     },
   ],
@@ -29,8 +25,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       icon: 'home',
       path: EPath.Home,
       authorization: {
-        isOwner: false,
-        isPrivate: false,
+        canShowSkill: true,
       },
     },
     {
@@ -38,8 +33,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       icon: 'edit',
       path: EPath.SkillInput,
       authorization: {
-        isOwner: true,
-        isPrivate: true,
+        canEditSkill: true,
       },
     },
     {
@@ -47,35 +41,25 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       icon: 'map',
       path: EPath.SkillMap,
       authorization: {
-        isOwner: true,
-        isPrivate: true,
+        canShowSkill: true,
       },
     },
     {
       text: 'Setting',
       icon: 'settings',
       path: EPath.Setting,
-      authorization: {
-        isOwner: true,
-        isPrivate: true,
-      },
       children: [
         {
           text: 'User',
           icon: 'insert_emoticon',
           path: EPath.SettingUser,
-          authorization: {
-            isOwner: true,
-            isPrivate: true,
-          },
         },
         {
           text: 'Group',
           icon: 'group',
           path: EPath.SettingGroup,
           authorization: {
-            isOwner: true,
-            isPrivate: true,
+            canSetting: true,
           },
         },
         {
@@ -83,8 +67,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
           icon: 'folder',
           path: EPath.SettingProject,
           authorization: {
-            isOwner: true,
-            isPrivate: true,
+            canSetting: true,
           },
         },
         {
@@ -92,8 +75,7 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
           icon: 'build',
           path: EPath.SettingSkill,
           authorization: {
-            isOwner: true,
-            isPrivate: true,
+            canSetting: true,
           },
         },
       ],
@@ -104,19 +86,11 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       text: 'How to',
       icon: 'import_contacts',
       path: EPath.Manual,
-      authorization: {
-        isOwner: false,
-        isPrivate: false,
-      },
     },
     {
       text: 'Technology',
       icon: 'desktop_mac',
       path: EPath.Technology,
-      authorization: {
-        isOwner: false,
-        isPrivate: false,
-      },
     },
   ],
   [
@@ -124,34 +98,19 @@ export const SIDEBAR_LIST: TSidebarListItem[][] = [
       text: 'Sample',
       icon: 'accessibility_new',
       path: EPath.Sample,
-      authorization: {
-        isOwner: false,
-        isPrivate: false,
-      },
+      canShowDevelopOnly: true,
       children: [
         {
           text: 'Atoms',
           path: EPath.SampleAtoms,
-          authorization: {
-            isOwner: false,
-            isPrivate: false,
-          },
         },
         {
           text: 'Molecules',
           path: EPath.SampleMolecules,
-          authorization: {
-            isOwner: false,
-            isPrivate: false,
-          },
         },
         {
           text: 'Organisms',
           path: EPath.SampleOrganisms,
-          authorization: {
-            isOwner: false,
-            isPrivate: false,
-          },
         },
       ],
     },

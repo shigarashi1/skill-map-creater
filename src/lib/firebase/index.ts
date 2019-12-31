@@ -25,7 +25,7 @@ export type TDocRefColumn = {
 
 // auth
 export type TUserCredential = firebase.auth.UserCredential;
-export type TFirebaseUser = firebase.User;
+export type TFirebaseUser = Pick<firebase.User, 'uid' | 'emailVerified' | 'isAnonymous' | 'photoURL' | 'email'>;
 const { SESSION, LOCAL, NONE } = firebase.auth.Auth.Persistence;
 export const Persistence = { SESSION, LOCAL, NONE };
 

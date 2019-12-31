@@ -4,11 +4,13 @@ import { Dispatch } from 'redux';
 import Sidebar from '../../components/organisms/Sidebar/Sidebar';
 
 import { AppState } from '../../store';
-import { UtilsSelector, RouterSelector } from '../../store/selector';
+import { UtilsSelector, RouterSelector, AuthSelector } from '../../store/selector';
 import { mapDispatchToCommonProps } from '../common';
 
 const mapStateToProps = (state: AppState) => {
   return {
+    isLoggedIn: AuthSelector.isLoggedIn(state),
+    isLoggedInByLink: AuthSelector.isLoggedInByLink(state),
     hasOpened: UtilsSelector.sidebar.hasOpened(state),
     currentPath: RouterSelector.currentPath(state),
   };

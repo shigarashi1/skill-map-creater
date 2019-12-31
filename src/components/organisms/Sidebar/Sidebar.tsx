@@ -15,14 +15,18 @@ import Collapse from '@material-ui/core/Collapse';
 
 import styles from './Sidebar.module.scss';
 
+import config from '../../../configuration/config';
 import { EPath, TSidebarListItem } from '../../../types';
 import { SIDEBAR_LIST } from '../../../lookups';
 import { TSidebarProps } from '../../../containers/components/Sidebar';
+import { getAuthorization } from '../../../helpers';
+import { canShowSidebarItem } from '../../../helpers/view/sidebar';
 
 type TProps = TSidebarProps & RouteComponentProps;
 
-const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history }) => {
+const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history, isLoggedIn, isLoggedInByLink }) => {
   const [openedPath, setOpenedPath] = useState<EPath[]>([]);
+  const userAuthorization = getAuthorization(isLoggedIn, isLoggedInByLink);
 
   const onClose = () => {
     sidebar.close();
@@ -40,7 +44,7 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history })
   };
 
   const renderListItem = (item: TSidebarListItem, key: number) => {
-    const { text, path, icon, children } = item;
+    const { text, path, icon, children, canShowDevelopOnly, authorization } = item;
     const hasMatchedPath = openedPath.includes(path);
     const handleClick = () => {
       if (hasMatchedPath) {
@@ -50,6 +54,10 @@ const Sidebar: React.FC<TProps> = ({ hasOpened, sidebar, currentPath, history })
       }
     };
 
+    const canShow = !!canShowDevelopOnly !== config.isDev && canShowSidebarItem(userAuthorization, authorization);
+    if (!canShow) {
+      return null;
+    }
     return children ? (
       <React.Fragment key={key}>
         <ListItem button={true} onClick={handleClick}>
