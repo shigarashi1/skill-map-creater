@@ -37,7 +37,7 @@ const Notifier: React.FC<TProps> = ({
 
   useEffect(() => {
     const addDisplayed = (v: string) => setDisplayedKeys([...displayedKeys, v]);
-
+    const dismiss = (v: string) => () => dismissNotification(v);
     notifications.forEach(({ message, options = {}, hasDismissed = false }) => {
       const key = String(options.key);
       if (hasDismissed) {
@@ -54,7 +54,6 @@ const Notifier: React.FC<TProps> = ({
       addDisplayed(key);
 
       // Display snackbar using notistack
-      const dismiss = () => dismissNotification(key);
       enqueueSnackbar(message, {
         ...options,
         autoHideDuration: getAutoHideDuration(options.variant),
@@ -66,7 +65,7 @@ const Notifier: React.FC<TProps> = ({
         onExit: (handler: any) => {
           removeNotification(key);
         },
-        action: (v: string) => <Button onClick={dismiss}>OK</Button>,
+        action: (v: string) => <Button onClick={dismiss(key)}>OK</Button>,
       });
     });
   }, [
