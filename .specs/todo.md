@@ -1,9 +1,6 @@
-- [x] PageTitleの修正
-- [x] 言語選択のコンポーネントの作成
-- [x] PasswordResetPageの作成
-- [x] SignUpPageの作成
 - [x] NotFoundPageの作成
   - [] 権限があるとき、homePageへ
   - [] 権限がないとき、topPageへ
-- [x] 言語選択はlocalStorageに記憶させておく
-- [x] notiSnackbarの仕組み作成
+
+- [] EPathを元にAuthorizationを返す
+- [] Guardの作成 
