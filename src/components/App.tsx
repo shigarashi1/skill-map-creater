@@ -5,6 +5,7 @@ import { SnackbarProvider } from 'notistack';
 //
 import history from '../helpers/history';
 import { configureStore } from '../store';
+import { ModalContextProvider } from './hoc/ModalProvider';
 
 import ErrorBoundary from './others/ErrorBoundary/ErrorBoundary';
 import BrowserTab from '../backgrounds/BrowserTab';
@@ -15,7 +16,6 @@ import OkCancelDialog from '../containers/components/dialogs/OkCancelDialog';
 import YesNoDialog from '../containers/components/dialogs/YesNoDialog';
 import SettingRestore from '../backgrounds/SettingRestore';
 import Notifier from '../backgrounds/Notifier';
-import { ModalContextProvider } from './hoc/ModalProvider';
 
 const store = configureStore({});
 
@@ -24,21 +24,21 @@ const App: React.FC = () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <SnackbarProvider maxSnack={5} preventDuplicate={false}>
-          <ModalContextProvider>
-            <ErrorBoundary>
-              <LoadingSpiner>
+          <ErrorBoundary>
+            <LoadingSpiner>
+              <ModalContextProvider>
                 <MainTemplate />
-              </LoadingSpiner>
-              <ErrorBoundary>
-                <BrowserTab />
-                <InfoDialog />
-                <OkCancelDialog />
-                <YesNoDialog />
-                <SettingRestore />
-                <Notifier />
-              </ErrorBoundary>
+              </ModalContextProvider>
+            </LoadingSpiner>
+            <ErrorBoundary>
+              <BrowserTab />
+              <InfoDialog />
+              <OkCancelDialog />
+              <YesNoDialog />
+              <SettingRestore />
+              <Notifier />
             </ErrorBoundary>
-          </ModalContextProvider>
+          </ErrorBoundary>
         </SnackbarProvider>
       </ConnectedRouter>
     </Provider>

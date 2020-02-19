@@ -1,7 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
-import Typography from '@material-ui/core/Typography';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import BaseDialog from '../organisms/dialogs/BaseDialog/BaseDialog';
 import { ModalContext } from './ModalProvider';
 
@@ -17,22 +18,25 @@ const ReactHooksSampleDialog: React.FC<TProps> = ({ changedValues }) => {
     setValues(selectedValues);
   }, [selectedValues]);
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     close();
-  };
+  }, [close]);
 
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     changedValues(values);
     close();
-  };
+  }, [changedValues, values, close]);
 
-  const onChecked = (v: string) => () => {
-    if (values.includes(v)) {
-      setValues(values.filter((vv) => vv !== v));
-    } else {
-      setValues([...values, v]);
-    }
-  };
+  const onChecked = useCallback(
+    (v: string) => () => {
+      if (values.includes(v)) {
+        setValues(values.filter((vv) => vv !== v));
+      } else {
+        setValues([...values, v]);
+      }
+    },
+    [setValues, values],
+  );
 
   return (
     <div>
@@ -48,19 +52,21 @@ const ReactHooksSampleDialog: React.FC<TProps> = ({ changedValues }) => {
           </div>
         }
       >
-        <React.Fragment>
-          <Typography variant="h6" gutterBottom={true}>
-            {['aaa', 'bbb', 'ccc', 'ddd', 'eee'].map((v, i) => (
-              <Checkbox
-                key={i}
-                checked={values.includes(v)}
-                onChange={onChecked(v)}
-                value={v}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
-              />
-            ))}
-          </Typography>
-        </React.Fragment>
+        <FormGroup row={true}>
+          {['aaa', 'bbb', 'ccc', 'ddd', 'eee'].map((v, i) => (
+            <FormControlLabel
+              key={i}
+              control={
+                <Checkbox
+                  checked={values.includes(v)}
+                  onChange={onChecked(v)}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+              }
+              label={v}
+            />
+          ))}
+        </FormGroup>
       </BaseDialog>
     </div>
   );

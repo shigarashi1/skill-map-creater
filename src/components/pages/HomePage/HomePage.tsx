@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 
 import styles from './HomePage.module.scss';
 import ReactHooksSampleDialog from '../../hoc/Modal';
@@ -10,17 +10,21 @@ type TProps = {};
 const HomePage: React.FC<TProps> = () => {
   const { open } = useContext(ModalContext);
   const [selectedValues, setSelectedValues] = useState(['aaa']);
-  const onOpen = () => {
+
+  const onOpen = useCallback(() => {
     open(selectedValues);
-  };
-  const onChanged = (v: string[]) => {
-    setSelectedValues(v);
-  };
+  }, [open, selectedValues]);
+
+  const onChanged = useCallback(
+    (v: string[]) => {
+      setSelectedValues(v);
+    },
+    [setSelectedValues],
+  );
+
   return (
     <div className={styles.root}>
-      {selectedValues.map((v, i) => (
-        <p key={i}>{v}</p>
-      ))}
+      {selectedValues.join(', ')}
       <Button onClick={onOpen}>表示</Button>
       <ReactHooksSampleDialog changedValues={onChanged} />
     </div>

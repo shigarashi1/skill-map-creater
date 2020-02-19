@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useCallback } from 'react';
 
 type TProps = {
   open: (values: string[]) => void;
@@ -28,8 +28,11 @@ const ModalContext = createContext(initialPropsState);
 
 const ModalContextProvider: React.FC = ({ children = null }) => {
   const [state, setState] = useState({ ...initialPropsState });
-  const open = (v: string[]) => setState({ ...state, selectedValues: v, hasOpened: true });
-  const close = () => setState({ ...initialPropsState, hasOpened: false });
+  const open = useCallback((v: string[]) => setState({ ...state, selectedValues: v, hasOpened: true }), [
+    setState,
+    state,
+  ]);
+  const close = useCallback(() => setState({ ...initialPropsState, hasOpened: false }), [setState]);
   return <ModalContext.Provider value={{ ...state, open, close }}>{children}</ModalContext.Provider>;
 };
 
